@@ -1,0 +1,4 @@
+<?
+$MESS["CITRUS_AREALTY3_LOGOUT"] = "выйти";
+$MESS["CITRUS_AREALTY3_LOGIN"] = "войти";
+$MESS["CITRUS_AREALTY3_PERSONAL"] = "Личный кабинет";

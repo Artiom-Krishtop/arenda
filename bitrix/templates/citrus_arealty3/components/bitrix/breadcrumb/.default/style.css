@@ -1,0 +1,51 @@
+.nav-panel {
+	padding: 15px 15px 5px;
+	position: relative;
+	z-index: 1;
+}
+.nav-breadcrumbs {
+	position: relative;
+	max-width: 100%;
+	overflow: hidden;
+	white-space: nowrap;
+	text-align: center;
+}
+.nav-breadcrumbs span {
+	display: inline;
+}
+.nav-breadcrumbs .btn-icon {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 14px;
+}
+a.breadcrumbs-item {
+	display: inline-block;
+	font-size: 13px;
+	vertical-align: middle;
+	position: relative;
+	color: #999;
+	border-radius: 3px;
+}
+.breadcrumbs-item-current {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 13px;
+	color: #666;
+}
+.breadcrumbs-item .btn-icon {
+	min-width: 35px;
+}
+.breadcrumbs-item .btn-label, .breadcrumbs-item-current .btn-label {
+	padding: 0 10px;
+	vertical-align: text-bottom;
+}
+a.breadcrumbs-item .btn-icon {
+	font-size: 22px;
+	vertical-align: -2px;
+}
+a.breadcrumbs-item + a {
+	margin-left: 25px;
+}
+.bx-no-touch a.breadcrumbs-item:hover, a.breadcrumbs-item:active {
+	color: #666;
+}

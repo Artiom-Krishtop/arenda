@@ -1,0 +1,44 @@
+#citrus_subscribe_form .fz152 {
+    margin-top: 15px;
+}
+#citrus_subscribe_form input[type="checkbox"] {
+    display: none;
+}
+#citrus_subscribe_form .field-checks label:before {
+    /*background: #fff;*/
+}
+#citrus_subscribe_form a {
+    color: #c5b99f;
+}
+#citrus_subscribe_form .field-checks label {
+    color: #c5b99f;
+    font-size: .75em;
+    white-space: normal;
+    margin-left: 25px;
+    overflow: visible;
+    line-height: 12px;
+}
+#citrus_subscribe_form .field-checks label:before {
+    margin-right: 5px;
+    float: left;
+    margin-left: -25px;
+    margin-top: 2px;
+}
+#citrus_subscribe_form .field-checks input:checked+label:after {
+    top: 6px;
+    left: -21px;
+}
+
+@media screen and (max-width: 767px) and (min-width: 320px) {
+    #citrus_subscribe_form .field-checks label {
+        font-size: .8em;
+        line-height: 25px;
+        text-align: left;
+    }
+    #citrus_subscribe_form .field-checks label:before {
+        float: none;
+    }
+    #citrus_subscribe_form .field-checks input:checked+label:after {
+        top: 0px;
+    }
+}

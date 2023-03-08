@@ -1,0 +1,45 @@
+.main-slider .nav-sliders a.nav-sliders__link {
+    background-color: rgba(255,255,255,.7);
+    border-color: #fff;
+    border-bottom: 0;
+}
+.main-slider .nav-sliders .swiper-button-prev, .main-slider .nav-sliders .swiper-button-next {
+    color: #fff;
+}
+.nav-sliders {
+    position: relative;
+    padding: 0 15px;
+}
+.nav-sliders a.nav-sliders__link {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    text-decoration: none;
+    border: 1px solid #c5b99f;
+    background-color: #f9f9f6;
+    border-radius: 6px 6px 0 0;
+    text-align: center;
+    color: #333;
+}
+.nav-sliders a.nav-sliders__link.is-active {
+    background-color: #fff;
+    border-bottom: 0;
+}
+.nav-sliders a.nav-sliders__link:not(.is-active):hover {
+    background-color: #fff;
+}
+.nav-sliders a.nav-sliders__link span.btn-label {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.2;
+    padding: 0 10px;
+}
+
+@media screen and (max-width: 1279px) {
+    .nav-sliders {
+        margin: 0 30px;
+    }
+}

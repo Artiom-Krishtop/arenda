@@ -1,0 +1,32 @@
+<?
+$aMenuLinks = Array(
+	Array(
+		"Аренда",
+		"/predlozhenija/offers/?view=LIST",
+		Array(),
+		Array(),
+		""
+	),
+	Array(
+		"Лучшие",
+		"/best/offers/?view=LIST",
+		Array(),
+		Array(),
+		""
+	),
+	Array(
+		"Контакты",
+		"kontakty/",
+		Array(),
+		Array(),
+		""
+	),
+	Array(
+		"Избранное",
+		"predlozhenija/izbrannoe/",
+		Array(),
+		Array("ICON"=>"icon-favorites"),
+		""
+	)
+);
+?>

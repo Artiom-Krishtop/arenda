@@ -1,0 +1,53 @@
+/**
+* Name: Table style
+* Author: by crycode
+*/
+
+table.table-formatted {
+  border-collapse: collapse;
+  background-color: transparent;
+  border: 0;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+}
+
+table.table-formatted th th {
+  text-align: left;
+}
+
+table.table-formatted th,
+table.table-formatted td {
+  padding: 0.75rem;
+  text-align: left;
+}
+
+table.table-formatted tr + tr td{
+  border-top: 1px solid #eceeef;
+}
+table.table-formatted thead th,
+table.table-formatted thead td {
+  vertical-align: bottom;
+  border-bottom: 2px solid #eceeef;
+
+}
+
+@media print {
+  thead {
+    display: table-header-group;
+  }
+  tr {
+    page-break-inside: avoid;
+  }
+  .table {
+    border-collapse: collapse !important;
+  }
+  .table td,
+  .table th {
+    background-color: #fff !important;
+  }
+  .table-bordered th,
+  .table-bordered td {
+    border: 1px solid #ddd !important;
+  }
+}

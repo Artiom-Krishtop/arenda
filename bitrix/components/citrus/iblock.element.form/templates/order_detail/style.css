@@ -1,0 +1,16 @@
+.ciee-fz152 {
+    margin-top: 15px;
+}
+.call-form input[type="checkbox"] {
+    display: none;
+}
+.form_order_detail .field-checks label:before {
+    background: #fff;
+}
+.form_order_detail a {
+    color: inherit;
+}
+.form_order_detail .field-checks label,
+.form_order_detail .field-radios label {
+    color: inherit;
+}

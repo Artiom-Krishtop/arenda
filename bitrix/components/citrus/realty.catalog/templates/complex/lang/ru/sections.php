@@ -1,0 +1,1 @@
+<?$MESS["CITRUS_AREALTY_DATE"] = "Дата";

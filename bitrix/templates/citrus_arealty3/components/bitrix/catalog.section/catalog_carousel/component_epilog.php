@@ -1,0 +1,2 @@
+<?
+CUtil::InitJSCore(["swiper", "equalHeight"]);

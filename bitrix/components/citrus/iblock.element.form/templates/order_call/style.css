@@ -1,0 +1,16 @@
+.ciee-fz152 {
+    margin-top: 15px;
+}
+.call-form input[type="checkbox"] {
+    display: none;
+}
+.md-modal .field-checks label:before {
+    background: #fff;
+}
+.md-modal a {
+    color: inherit;
+}
+.md-modal .field-checks label,
+.md-modal .field-radios label {
+    color: inherit;
+}

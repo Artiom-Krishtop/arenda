@@ -1,0 +1,15 @@
+@media all {
+    .file-upload-light__inner input {
+        display: none;
+    }
+    .file-upload-light__description {
+        display: flex;
+        align-items: center;
+    }
+    .file-upload-light__label.btn {
+        cursor: pointer;
+        height: 50px;
+        width: 220px;
+        margin-right: 20px;
+    }
+}

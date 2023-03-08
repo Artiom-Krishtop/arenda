@@ -1,0 +1,4 @@
+<a href="/ajax/request.php" rel="nofollow" data-toggle="modal" class="btn btn-primary">
+    <span class="btn-label">Request</span>
+    <span class="btn-icon fa fa-envelope-o"></span>
+</a>

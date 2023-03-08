@@ -1,0 +1,8 @@
+.form__item--password-icon{
+    display: inline-block;
+    position: absolute;
+    right: 18px;
+    top: 45px;
+    width: 22px;
+    height: 16px;
+}

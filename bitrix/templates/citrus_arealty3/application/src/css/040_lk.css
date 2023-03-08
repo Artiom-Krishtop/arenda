@@ -1,0 +1,117 @@
+
+@media all {
+	.lk {
+		display: flex;
+		border-radius: 4px;
+		background-color: #f3f1ec;
+	}
+	.lk__form-w, .lk__text-w {
+		width: 50%;
+		padding: 30px;
+	}
+	.lk__form-w {
+		border-radius: 4px;
+		color: #fff;
+	}
+	.lk--title, .h3.lk--title {
+		padding-bottom: 15px;
+		margin-bottom: 15px;
+		border-bottom: 1px solid;
+	}
+
+	.lk--form {
+		margin-top: 30px;
+	}
+	.lk--form .form-group .field-title._active {
+		color: #fff;
+	}
+
+	.form-group.form-group-btn {
+		display: flex;
+		align-items: center;
+		margin-top: 35px;
+	}
+	.form-group.form-group-btn.btn_center {
+		justify-content: center;
+	}
+	.form-group-btn__description {
+		width: 50%;
+	}
+	.button-position-right {
+		width: 50%;
+	}
+
+	.form-group-btn__description, .form-group-btn__description a {
+		color: #fff;
+	}
+	.form-group-btn__description a:hover {
+		color: #fff;
+		text-decoration: none;
+	}
+
+	.lk--form .btn {
+		width: 150px;
+		max-width: 100%;
+	}
+
+	.section-footer > .citrus-arealty-manage-objects__nav {
+		margin-top: -40px;
+	}
+}
+@media (max-width: 767px) {
+	.lk {
+		display: block;
+	}
+	.lk__form-w, .lk__text-w {
+		width: auto;
+		padding: 20px 30px;
+	}
+	.h3.lk--title, .lk--title {
+		margin-top: 15px;
+	}
+}
+@media (max-width: 479px) {
+	.lk__form-w, .lk__text-w {
+		padding: 10px 20px;
+	}
+
+	.section-footer > .citrus-arealty-manage-objects__nav {
+		margin-top: -10px;
+	}
+}
+
+/*captcha*/
+@media all {
+	.field-compare {
+		display: flex;
+		margin: -22px 0;
+	}
+	.captcha-image-group {
+		width: 180px;
+		margin-right: 20px;
+	}
+	.captcha-image {
+		height: 3em;
+	}
+	.captcha-input-group {
+		flex: 1;
+	}
+}
+@media (max-width: 1023px) {
+	.field-compare {
+		display: block;
+		margin: 0;
+	}
+}
+@media (max-width: 767px) {
+	.field-compare {
+		display: flex;
+		margin: -22px 0;
+	}
+}
+@media (max-width: 479px) {
+	.field-compare {
+		display: block;
+		margin: 0;
+	}
+}

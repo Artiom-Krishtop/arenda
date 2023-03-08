@@ -1,0 +1,28 @@
+
+@media all {
+	.line-checkbox {
+		display: flex;
+		flex-wrap: wrap;
+		margin: -2px;
+	}
+	.line-checkbox__item {
+		margin: 2px;
+		flex: 1;
+	}
+	.line-checkbox__item-input {
+		display: none;
+	}
+	.line-checkbox__item-label {
+		width: 100%;
+		min-width: 30px;
+		height: 35px;
+		padding: 0 5px;
+		border: 1px solid;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.line-checkbox__item-input:checked + .line-checkbox__item-label {
+		color: #fff;
+	}
+}

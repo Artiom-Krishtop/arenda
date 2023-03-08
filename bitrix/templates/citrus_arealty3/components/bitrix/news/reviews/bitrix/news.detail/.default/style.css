@@ -1,0 +1,50 @@
+@media all {
+  .article-detail {
+    display: flex;
+  }
+
+  .article-body {
+    margin-left: 20px;
+  }
+
+  .article-meta {
+    font-size: 14px;
+    display: inline-block;
+    color: #666;
+    margin-bottom: 10px;
+  }
+
+  .article-user-ava {
+    display: block;
+  }
+
+  .article-user-ava span {
+    display: block;
+    min-width: 170px;
+    padding-bottom: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .article-footer {
+    margin-top: 40px;
+    margin-bottom: 70px;
+  }
+
+}
+
+@media (max-width: 479px) {
+  .article-detail {
+    display: block;
+  }
+
+  .article-body {
+    margin-left: 0;
+    margin-top: 20px;
+  }
+
+  .article-user-ava span {
+    padding-bottom: 50%;
+  }
+
+}

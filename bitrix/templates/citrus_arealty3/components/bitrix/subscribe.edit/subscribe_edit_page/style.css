@@ -1,0 +1,23 @@
+div.subscribe-edit .red {
+	color:red;
+}
+div.subscribe-edit .green {
+	color:green;
+}
+div.subscribe-edit .errorcolor {
+	color:red;
+}
+div.subscribe-edit .successcolor {
+	color:green;
+}
+.data-table td+td{
+	padding-left: 10px;
+}
+.starrequired {
+	color: red;
+}
+.sign {
+    font-style: italic;
+    color: #666;
+    margin-top: 4px;
+}

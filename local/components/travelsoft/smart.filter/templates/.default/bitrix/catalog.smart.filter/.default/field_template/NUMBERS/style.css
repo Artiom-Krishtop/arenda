@@ -1,0 +1,26 @@
+
+@media all {
+	/*slider*/
+	.filter-slider {
+		margin-bottom: 16px;
+	}
+
+	.filter-numbers_input-wrap {
+		display: flex;
+		justify-content: space-between;
+	}
+	.filter-numbers_input {
+		width: 40%;
+		height: 30px;
+		border: 1px solid #ccc;
+		background-color: #f2f2f2;
+		padding: 0 8px;
+	}
+	.citrus-sf-field:not(._open) .irs-from,
+	.citrus-sf-field:not(._open) .irs-to,
+	.citrus-sf-field:not(._open) .irs-single,
+	.citrus-sf-field:not(._open) .irs-min,
+	.citrus-sf-field:not(._open) .irs-max {
+		visibility: hidden !important;
+	}
+}

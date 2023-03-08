@@ -1,0 +1,214 @@
+<div id="smart-form-settings_wr" ng-controller="settingsFormCtrl">
+	<p ng-if="error" ng-bind="error"></p>
+	<form action="" autocomplete="off" class="cry-f" ng-if="!error">
+		<div class="cry-f-l" >
+			<div class="cry-t-m-t">
+				<strong translate="SETTINGS_F_FIELD_LIST"></strong>
+				<div class="cry-m-t-b">
+					<button ng-click="addNewGroup()" type="button" id="create_group" class="cry-b cry-b-s">
+						<i class="fa fa-th-large" aria-hidden="true"></i>
+						<span translate="SETTINGS_F_BTN_ADD_GROUP"></span>
+					</button>
+					<button ng-click="showHideFieldForm()" type="button" id="create_field" class="cry-b cry-b-t" ng-class="{'selected' : !curFieldIndex}">
+						<i class="fa fa-list" aria-hidden="true" ng-if="curFieldIndex"></i>
+						<i class="fa fa-times" aria-hidden="true" ng-if="!curFieldIndex"></i>
+						<span ng-if="curFieldIndex" translate="SETTINGS_F_SHOW_FIELDS"></span>
+						<span ng-if="!curFieldIndex" translate="SETTINGS_F_HIDE_FIELDS"></span>
+					</button>
+				</div>
+			</div>
+			<div class="cry-t-m-c">
+				<ul class="cry-t-m" ng-class="{'not-item-dnd' : !models.show.items.length}" id="multi" dnd-list dnd-drop="onDrop(models.show, moveElement, index)">
+					<li ng-if="!models.show.items.length" class="not-item">
+						<p translate="SETTINGS_F_DEFAULT_MESSAGE_EMPTY_FIELD"></p>
+					</li>
+					<field
+						dnd-moved="onMoved(models.show)"
+						dnd-selected="field.selected = !field.selected"
+						dnd-dragend="models.show.dragging = false"
+						dnd-dragstart="models.show.dragging = true"
+						dnd-draggable="getSelectedItemsIncluding(models.show, field)"
+						dnd-horizontal-list="true"
+
+						field-data="field"
+						field-index="$index"
+						field-group="field.GROUP_FIELD"
+
+						ng-repeat="field in models.show.items"
+						ng-class="{'selected' : curFieldIndex == field.id}"
+					></field>
+				</ul>
+			</div>
+		</div>
+		<div class="cry-f-r">
+			<div class="cry-i-t">
+				<strong translate="SETTINGS_F_SETTINGS_FIELD_TITLE"></strong>
+			</div>
+			<field-detail
+				field-data="fieldDetail"
+				field-group="field.GROUP_FIELD"
+				ng-repeat="fieldDetail in arField"
+				ng-show="curFieldIndex == fieldDetail.id"
+			></field-detail>
+		</div>
+		<div class="cry-f-r cry-f-l-f" ng-show="!curFieldIndex">
+			<div class="cry-i-t" translate="SETTINGS_F_AVAILABLE_FIELD"></div>
+			<div class="cry-f-l-f-c">
+				<ul class="cry-t-m" dnd-list dnd-drop="onDrop(models.hide, moveElement, index)" dnd-dragover="false">
+					<li ng-if="!models.hide.items.length" class="not-item">
+						<p translate="SETTINGS_F_FIELD_LIST_EMPTY"></p>
+					</li>
+					<li
+						dnd-moved="onMoved(models.hide)"
+						dnd-selected="hideField.selected = !hideField.selected"
+						dnd-dragend="models.hide.dragging = false"
+						dnd-dragstart="models.hide.dragging = true"
+						dnd-draggable="getSelectedItemsIncluding(models.hide, hideField)"
+						dnd-horizontal-list="true"
+
+						ng-class="{'selected': hideField.selected}"
+						ng-repeat="hideField in models.hide.items"
+					>
+						<div class="cry-sort">
+							<i class="fa fa-bars" aria-hidden="true"></i>
+						</div>
+						<a href="javascript://" title="{{hideField.ORIGINAL_TITLE}}" class="cry-t-m-n">
+							<span ng-bind="hideField.ORIGINAL_TITLE"></span>
+						</a>
+
+						<i ng-hide="!hideField.selected" class="fa fa-check cry-tc-blue" aria-hidden="true"></i>
+						<i ng-hide="hideField.selected" ng-click="addField()" class="fa fa-plus" aria-hidden="true"></i>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</form>
+	<script type="text/ng-template" id="fieldTemplate.html">
+		<li>
+			<div class="cry-m-gp" ng-if="group">
+				<div class="cry-sort">
+					<i class="fa fa-th-large" aria-hidden="true"></i>
+				</div>
+				<a href="javascript://" ng-click="setFieldChecked()" title="{{field.ORIGINAL_TITLE}}" class="cry-t-m-n cry-f-g">
+					<span ng-bind="field.ORIGINAL_TITLE" translate="SETTINGS_F_G_DEFAULT"></span>
+				</a>
+				<a href="javascript://" class="cry-t-m-d js-group-remove" ng-click="removeField()"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+			</div>
+			<div ng-if="!group">
+				<div class="cry-sort">
+					<i class="fa fa-bars" aria-hidden="true"></i>
+				</div>
+				<a href="javascript://" ng-click="setFieldChecked()" title="{{field.ORIGINAL_TITLE}}" class="cry-t-m-n">
+					<span ng-bind="field.ORIGINAL_TITLE"></span>
+				</a>
+				<input type="checkbox" name="" ng-checked="field.IS_REQUIRED">
+				<label class="required-check" ng-click="field.IS_REQUIRED = !field.IS_REQUIRED" title="Обязательное/Необязательное поле"></label>
+				<input type="checkbox" name="" ng-checked="field.HIDE_FIELD">
+				<label class="view-check" ng-click="field.HIDE_FIELD = !field.HIDE_FIELD" title="Скрыть/Показать поле"></label>
+				<a href="javascript://" class="cry-t-m-d js-field-remove" ng-click="removeField()"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+			</div>
+		</li>
+	</script>
+
+	<script type="text/ng-template" id="fieldDetailTemplate.html">
+		<div class="cry-t-i" id="cry-tab_1">
+			<div ng-if="::field.GROUP_FIELD" class="cry-t-i-c">
+				<div class="cry-field-g">
+					<label for="" class="cry-field-g-l" translate="SETTINGS_G_F_TITLE"></label>
+					<input type="text" value="" ng-model="field.TITLE" class="cry-field-g-t" placeholder="{{'SETTINGS_G_F_TITLE_P' | translate}}">
+				</div>
+				<div class="cry-field-g">
+					<label for="" class="cry-field-g-l" translate="SETTINGS_G_F_CLASS"></label>
+					<input type="text" value="" ng-model="field.CLASS" class="cry-field-g-t" placeholder="{{'SETTINGS_G_F_CLASS_P' | translate}}">
+				</div>
+				<div class="cry-field-g">
+					<label for="" class="cry-field-g-l" translate="SETTINGS_G_F_DL"></label>
+					<input type="number" value="" valid-number ng-min="1" ng-model="field.DEPTH_LAVEL" class="cry-field-g-t" placeholder="{{'SETTINGS_G_F_DL_P' | translate}}">
+				</div>
+			</div>
+			<div ng-if="::!field.GROUP_FIELD" class="cry-t-i-c">
+				<div class="cry-field-g">
+					<label for="" class="cry-field-g-l" translate="SETTINGS_G_F_FIELD_TITLE"></label>
+					<input type="text" value="" ng-model="field.TITLE" class="cry-field-g-t" placeholder="{{'SETTINGS_G_F_FIELD_TITLE_P' | translate}}">
+				</div>
+				<div class="cry-field-g">
+					<label for="" class="cry-field-g-l" translate="SETTINGS_G_F_FIELD_DESC_P"></label>
+					<textarea type="text" value="" ng-model="field.DESCRIPTION"  rows="2" class="cry-field-g-t" placeholder="{{'SETTINGS_G_F_FIELD_DESC_P' | translate}}"></textarea>
+				</div>
+				<div class="cry-field-g">
+					<label for="" class="cry-field-g-l" translate="SETTINGS_G_F_FIELD_PLACEHOLDER"></label>
+					<input type="text" value="" ng-model="field.PLACEHOLDER" class="cry-field-g-t" placeholder="{{'SETTINGS_G_F_FIELD_PLACEHOLDER_P' | translate}}">
+				</div>
+				<div class="cry-field-g">
+					<label for="" class="cry-field-g-l" translate="SETTINGS_G_F_ADD_CLASS"></label>
+					<input type="text" value="" ng-model="field.CLASS"  class="cry-field-g-t" placeholder="{{'SETTINGS_G_F_ADD_CLASS_P' | translate}}">
+				</div>
+				<div class="cry-field-g">
+					<label for="" class="cry-field-g-l" translate="SETTINGS_G_F_DEFAULT_VALUE"></label>
+					<input type="text" value="" ng-model="field.DEFAULT"  class="cry-field-g-t" placeholder="{{'SETTINGS_G_F_DEFAULT_VALUE_P' | translate}}">
+				</div>
+				<div class="cry-field-v-c">
+					<div class="cry-field-v-t m-b-10">
+						<strong translate="SETTINGS_G_F_FIELD_TEMPLATE"></strong>
+					</div>
+					<div class="cry-field-g">
+						<label
+							for=""
+							class="cry-field-g-l"
+							translate="SETTINGS_G_F_CHOOSE_TEMPLATE"
+						></label>
+						<div class="item-multi-checkbox">
+							<div ng-repeat="(id,tpl) in field.TEMPLATES">
+								<input
+									id="{{field.id + $index}}"
+									ng-model="field.TEMPLATE_ID"
+									type="radio"
+									ng-value="id"
+									name="{{field.id + '_TEMPLATE_ID'}}"
+								/>
+								<label for="{{field.id + $index}}" ng-bind="id" title="{{tpl.title}}"></label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="cry-field-v-c">
+					<h4 class="cry-field-v-t" translate="SETTINGS_G_F_VALIDATION"></h4>
+					<ul class="cry-f-v-m">
+						<li ng-class="{'selected' : !validrultab}">
+							<a href="javascript://" ng-click="validrultab = false" translate="SETTINGS_G_F_VALIDATION_PARAMS"></a>
+						</li>
+						<li ng-class="{'selected' : validrultab}">
+							<a href="javascript://" ng-click="validrultab = true" translate="SETTINGS_G_F_VALIDATION_ADD_PARAMS"></a>
+						</li>
+					</ul>
+					<div class="cry-field-g-v" ng-show="!validrultab">
+						<div class="cry-field-g">
+							<label for="" class="cry-field-g-l" translate="SETTINGS_G_F_VALIDATION_RULES"></label>
+							<div class="item-multi-checkbox">
+								<label ng-repeat="rule in rules" ng-class="{'selected' : rule.selected}" ng-click="setAvilibalValidateRul()" ng-bind="rule.title"></label>
+							</div>
+							<div class="item-multi-value">
+								<input class="cry-field-g-t inner" name="new-rule" type="text" ng-model="newRule" />
+								<i ng-Click="addNewRuleItem()" class="new-rule-btn fa fa-plus" aria-hidden="true" ></i>
+							</div>
+						</div>
+						<div class="cry-field-g">
+							<label for="" class="cry-field-g-l" translate="SETTINGS_G_F_ADD_PARAMS"></label>
+							<textarea type="text" value="" ng-model="field.ADDITIONAL" rows="2" class="cry-field-g-t" placeholder="{{'SETTINGS_G_F_ADD_PARAMS_P' | translate}}"></textarea>
+						</div>
+					</div>
+					<div class="cry-field-g-v" ng-show="validrultab">
+						<div class="cry-field-g">
+							<label for="" class="cry-field-g-l" translate="SETTINGS_G_F_VALIDATION_RULES"></label>
+							<textarea type="text" value="" ng-model="field.REGRULE" rows="2" class="cry-field-g-t" placeholder="{{'SETTINGS_G_F_VALIDATION_RULES_P' | translate}}"></textarea>
+						</div>
+						<div class="cry-field-g">
+							<label for="" class="cry-field-g-l" translate="SETTINGS_G_F_ERROR_MSG"></label>
+							<textarea type="text" value="" ng-model="field.VALID_ERROR_MSG" rows="2" class="cry-field-g-t" placeholder="{{'SETTINGS_G_F_ERROR_MSG_P' | translate}}"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+</div>

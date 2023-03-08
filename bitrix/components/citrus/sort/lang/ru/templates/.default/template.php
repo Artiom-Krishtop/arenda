@@ -1,0 +1,2 @@
+<? $MESS["CITRUS_TEMPLATE_VIEW_NAME"] = "Вид:";
+$MESS["CITRUS_TEMPLATE_SORT_NAME"] = "Сортировать:";

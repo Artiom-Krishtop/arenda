@@ -1,0 +1,68 @@
+
+@media all {
+	[data-template="DROPDOWN"] .citrus-sf-values {
+		margin-top: -1px;
+		padding: 0;
+	}
+	[data-template="DROPDOWN"] .citrus-sf-values:before, [data-template="DROPDOWN"] .citrus-sf-values:after {
+		display: none;
+	}
+
+	.citrus-select {
+		display: flex;
+		flex-direction: column;
+		padding: 10px 0;
+	}
+	.citrus-select__items-wrapper {
+		max-height: 278px;
+		overflow: auto;
+	}
+	.citrus-select__item {
+		display: flex;
+		align-items: center;
+		padding: 8px 15px;
+	}
+		.citrus-select__item._search-filtered {
+			display: none;
+		}
+	.citrus-select__item-input {
+		display: none;
+	}
+
+	.citrus-select__item-name {
+		margin-left: 10px;
+	}
+
+	/*search*/
+	.citrus-select__search {
+		margin: 0 15px 12px;
+		position: relative;
+	}
+	.citrus-select__search-input {
+		background-color: #f9f8f5;
+		border: none;
+		border-bottom: 1px solid #cccccc;
+		height: 35px;
+		line-height: 35px;
+		padding: 0 15px;
+		width: 100%;
+	}
+	.citrus-select__search-icon {
+		position: absolute;
+		font-size: 20px;
+		color: #999999;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		height: 35px;
+		width: 35px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.citrus-select__chose-all {
+		position: absolute;
+		right: 0;
+		font-size: 12px;
+	}
+}

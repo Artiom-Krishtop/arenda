@@ -1,0 +1,45 @@
+:root {
+  --primary-color: #eb5019;
+  --hover-color: #ca4212;
+  --link-color: var(--primary-color); }
+
+.theme--bg-color, .btn.btn-primary, .item-checkbox input[type=checkbox]:checked + label:after, .team-list .swiper-pagination-bullet.swiper-pagination-bullet-active, .btn.sorting-btn.is-active, .recommendation-list .swiper-pagination-bullet.swiper-pagination-bullet-active, .object-price, .hypothec-result-price, .header:before, .header-menu-sub, .bx-no-touch .btn.btn-footer-up:hover, .btn.btn-footer-up:active, .catalog-th-large .catalog-item-price, .catalog-th-list .catalog-item-price, .slider .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active, .irs-bar-edge, .irs-bar, .map-container:after, .switch a:hover, .switch span.selected, .citrus-objects-map-popup__price, .list.check li:before, .list .item:before, .list li:before, .line-checkbox__item-input:checked + .line-checkbox__item-label, .irs-bar, .irs-from, .irs-to, .irs-single, .citrus-realty-mortgage .ui-slider-horizontal, .citrus-realty-mortgage .ui-widget-content .ui-state-hover, .goods-price, .footer-help-block, .bx-switches--input:checked + .bx-switches--checkmark, .lk__form-w, .p__swiper .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: var(--primary-color); }
+
+.btn-with-additional:hover span.btn-additional-label, .irs-bar-edge {
+  background: var(--primary-color);
+  color: #fff; }
+
+.theme_hover--bg-color, .bx-no-touch a.header-menu-link:hover, a.header-menu-link:active, .bx-no-touch .header-menu-item:hover a.header-menu-link, .header-menu-item:active a.header-menu-link, .header-menu-item.is-active a.header-menu-link, .header-menu-sub, .btn.btn-primary:not(.is-active):active, html:not(.bx-touch) ul.h-menu > li:hover > a, html:not(.bx-no-touch) ul.h-menu > li:active > a, ul.h-menu > li.selected > a, ul.h-sub-menu a:hover, .btn.btn-primary:hover {
+  background-color: var(--hover-color); }
+
+.theme--border-color, .item-checkbox input[type=checkbox]:checked + label:before, .btn.sorting-btn.is-active, .bx-no-touch .btn.service-menu-btn:hover, .btn.service-menu-btn:active, .object-gallery-thumbs a.gallery-thumbs.is-active, .btn.btn-header-phone, .bx-no-touch .catalog-th-large .catalog-item:hover, .catalog-th-large .catalog-item:active, .catalog-th-large .catalog-item-meta, .team-meta span.btn-label, .line-checkbox__item-label, .irs-slider, .irs-slider.single, .citrus-realty-mortgage .ui-widget-content .ui-state-default, .bx-switches--input:checked + .bx-switches--checkmark, .irs-bar-edge {
+  border-color: var(--primary-color); }
+
+.theme--color, .input-container select:focus + span.select-icon, .item-checkbox input[type=checkbox]:checked + label, .item-radio input[type=radio]:checked + label, a, .help-item:before, .hypothec-result-monthly-payment, .bx-no-touch .btn.btn-outline-white:hover, .btn.btn-outline-white:active, .bx-no-touch .footer-menu > a:hover, .footer-menu > a:active, .bx-no-touch .subscribe .btn.btn-subscribe:hover, .subscribe .btn.btn-subscribe:active, .bx-no-touch a.catalog-item-name:hover, a.catalog-item-name:active, .ask-meta .btn, .bx-no-touch .swiper-button-prev:hover, .bx-no-touch .swiper-button-next:hover, .swiper-button-prev:active, .swiper-button-next:active, .nav-sliders a.swiper-slide.is-active, .nav-sliders a.swiper-slide:not(.is-active):hover, a.article-name, .btn.btn-transparent:hover, .cui-checkbox__input:checked + .cui-checkbox__checkmark, .icon-logo, a.header-logo .desc-logo span, input:checked + .filter-checkmark, .btn-with-additional span.btn-additional-label, .sorting-item._selected, .btn.btn-border._white:hover, .jk-menu__favorites-count, td.popupmenu div.popupitem div.icon, .subscribe__agree-input:checked + .subscribe__agree-checkmark, .table-slider__sort-icon._active {
+  color: var(--primary-color); }
+
+a:hover, .team-meta .meta_link._phone:hover span.btn-label, .map-link:hover, .catalog-card:hover .catalog-card__name, .catalog-card:hover .catalog-card__footer {
+  color: var(--hover-color); }
+
+.bx-no-touch a.article-user:hover .article-user-ava span, a.article-user:active .article-user-ava span {
+  -webkit-box-shadow: 0 0 0 3px var(--primary-color);
+  box-shadow: 0 0 0 3px var(--primary-color); }
+
+.theme-fill {
+  fill: var(--primary-color); }
+
+@media screen and (min-width: 1024px) {
+  .btn.btn-header-phone {
+    color: var(--primary-color); }
+
+  .bx-no-touch .btn.btn-header-phone:hover, .btn.btn-header-phone:active {
+    background-color: var(--primary-color); } }
+
+@media screen and (max-width: 1023px) {
+  .header-menu {
+    background-color: var(--primary-color); } }
+
+@media print {
+  .object-price {
+    color: var(--primary-color); } }

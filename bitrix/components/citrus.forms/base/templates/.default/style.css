@@ -1,0 +1,872 @@
+
+/* основные стили формы */
+@media all {
+	button, input[type="button"], input[type="reset"], input[type="submit"] {
+		cursor: pointer;
+	}
+	input::-ms-clear, textarea::-ms-clear {
+		display: none;
+	}
+	.citrus-form input, .citrus-form select, .citrus-form textarea {
+		-moz-box-shadow: none;
+		-webkit-box-shadow: none;
+		background: 0;
+		border-radius: 0;
+		border: 0;
+		box-shadow: none;
+		color: inherit;
+		font-family: inherit;
+		font-size: inherit;
+		font-weight: inherit;
+		margin: 0;
+		padding: 0;
+	}
+	.cui-ajax-load-form {
+		width: 400px;
+		max-width: 100%;
+	}
+	.citrus-form-title {
+		border-bottom: 1px solid #dcd5c5;
+		font-size: 18px;
+		font-weight: 600;
+		line-height: 1.2;
+		margin-bottom: 15px;
+		padding-bottom: 15px;
+		text-transform: uppercase;
+		text-align: center;
+	}
+	.citrus-form-description {
+		margin: 15px 0;
+		display: flex;
+		align-items: center;
+	}
+	.citrus-form-description__icon {
+		font-size: 2.3em;
+		color: #c5b99f;
+		padding-right: .5em;
+	}
+	.citrus-form-description__text {
+
+	}
+	.citrus-form-description__icon{
+		color: #fff;
+	}
+	.citrus-form-description__text{
+		font-style: italic;
+		color: #837760;
+	}
+
+	.citrus-form__fields {
+		margin-top: 0;
+		margin-bottom: -22px;
+		padding-top: 10px;
+	}
+	.form-group {
+		position: relative;
+		margin-bottom: 1.5em;
+		margin-top: 1.5em;
+	}
+	.form-group.first-group-field {
+		margin-top: 0;
+	}
+
+	/*.required-message-block*/
+	.form-group.required-message-block {
+		margin: 1rem 0;
+	}
+	.form-group.required-message-block span {
+		font-size: 13px;
+		color: #999;
+	}
+	.form-group.required-message-block span.starrequired{
+		color: #ce2b28;
+	}
+	/*agree block*/
+	.form-group.agree-block {
+		margin: 1rem 0;
+	}
+	.form-group.agree-block>div {
+		font-size: .8em;
+		line-height: 1em;
+	}
+	.form-group.agree-block .cui-checkbox__label-text {
+		color: #9e9e9e;
+	}
+	.form-group.agree-block .cui-checkbox__label-text a {
+		white-space: nowrap;
+	}
+
+
+
+	.field-inline {
+		margin-bottom: -1.5rem;
+		margin-top: -1.5rem;
+	}
+	.field-group .field-inline:first-child {
+		margin-top: 0;
+	}
+	.field-group .field-inline:last-child {
+		margin-bottom: 0;
+	}
+	/*clearfix field-group*/
+	.field-inline:before, .field-inline:after {
+		display: table;
+		content: " ";
+	}
+	.field-inline:after {
+		clear: both;
+	}
+	/*material*/
+	.form-group .field-title {
+		color: #9e9e9e;
+		position: absolute;
+		top: 0.8em;
+		left: 1em;
+		font-size: 1em;
+		cursor: text;
+		transition: .2s ease-out;
+		display: block;
+		z-index: 1;
+		pointer-events: none;
+		width: calc(100% - .75em);
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.form-group .field-title._active {
+		left: 0;
+		font-size: 0.8em;
+		-webkit-transform: translateY(-2.4em);
+		transform: translateY(-2.4em);
+	}
+
+	.citrus-form input:not([type]), .citrus-form input[type=text], .citrus-form input[type=password], .citrus-form input[type=email], .citrus-form input[type=url], .citrus-form input[type=time], .citrus-form input[type=date], .citrus-form input[type=datetime], .citrus-form input[type=datetime-local], .citrus-form input[type=tel], .citrus-form input[type=number], .citrus-form input[type=search], .citrus-form textarea, .citrus-form select {
+		height: 3em;
+		font-size: 1em;
+	}
+	.citrus-form .form-control {
+		display: block;
+		width: 100%;
+		padding: 6px 12px;
+		line-height: 1.42857143;
+		color: #555555;
+		background-color: #f3f3f3;
+		background-image: none;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		position: relative;
+		border-bottom: 1px solid rgba(103, 103, 103, 0.6);
+		-webkit-transition: ease-in-out .15s;
+		-o-transition: ease-in-out .15s;
+		transition: ease-in-out .15s;
+	}
+	.citrus-form .form-control:focus {
+		background-color: #f7f7f7;
+		outline: 0;
+	}
+
+	/*input group*/
+	.input-group {
+		position: relative;
+		display: table;
+		border-collapse: separate;
+	}
+
+	/*footer*/
+	.citrus-form__footer {
+		margin-top: -5px;
+	}
+	.citrus-form__footer:before{
+		content: '';
+		display: table;
+	}
+
+	/*button position*/
+	.form-group.form-group-btn {
+		margin-top: 35px;
+		margin-bottom: 10px;
+	}
+	.button-position-right {
+		text-align: right;
+	}
+	.button-position-center {
+		text-align: center;
+	}
+	.button-position-justify {
+		text-align: center;
+	}
+	.button-position-justify .btn {
+		display: block;
+		width: 100%;
+	}
+}
+
+/* темы */
+/*gray*/
+@media all {
+	.citrus-form.citrus-form__style-gray {
+		background-color: #f3f1ec;
+		-webkit-box-shadow: 0 2px 0 0 rgba(0,0,0,.15);
+		box-shadow: 0 2px 0 0 rgba(0,0,0,.15);
+		border-radius: 6px;
+		margin-bottom: 2px;
+		padding: 20px;
+	}
+	/*fields*/
+	.citrus-form.citrus-form__style-gray .form-group .field-title._active {
+		color: #333;
+	}
+	.citrus-form.citrus-form__style-gray .form-control, .citrus-form.citrus-form__style-gray .form-control:focus {
+		background-color: #fff;
+	}
+	.citrus-form.citrus-form__style-gray .bootstrap-select .dropdown-toggle {
+		background-color: #fff;
+	}
+}
+/*bordered*/
+@media all {
+	.citrus-form.citrus-form__style-bordered {
+		border: 1px solid #b3cad3;
+		padding: 20px 90px 40px;
+		background-color: #fff;
+	}
+}
+@media (max-width: 1023px) {
+	.citrus-form.citrus-form__style-bordered {
+		padding: 20px 30px 20px;
+	}
+}
+@media (max-width: 479px) {
+	.citrus-form.citrus-form__style-bordered {
+		padding: 12px 20px 20px;
+	}
+}
+
+/*combined-fields*/
+@media all {
+	/*combined-fields*/
+	.combined-fields {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		margin-bottom: 22px;
+		margin-top: 22px;
+	}
+	.combined-fields:last-child {
+		margin-bottom: 0;
+	}
+	.combined-fields__title {
+		width: 140px;
+		flex-shrink: 0;
+		padding-right: 8px;
+	}
+	.combined-fields__title-main {
+		font-size: 14px;
+		color: #003a53;
+	}
+	.combined-fields__title-description {
+		font-size: 12px;
+		color: #657880;
+		line-height: 1.2;
+	}
+	.combined-fields .form-group.combined-fields-item {
+		margin-top: 0;
+		margin-bottom: 0;
+		flex: 1;
+	}
+	.combined-fields-separate {
+		font-size: 14px;
+		color: #657880;
+		margin: 0 14px;
+	}
+
+	.combined-fields .help-block {
+		flex-basis: 100%;
+	}
+}
+@media (max-width: 479px) {
+	.combined-fields {
+		display: block;
+	}
+	.combined-fields .form-group.combined-fields-item {
+		width: 100%;
+	}
+	.combined-fields-separate + .form-group.combined-fields-item {
+		margin-top: 22px;
+	}
+	.combined-fields-separate {
+		display: none;
+	}
+	.combined-fields__title {
+		margin-bottom: 5px;
+	}
+}
+
+@media all {
+	.form-group-container>.field-group--title {
+		margin-top: 30px;
+	}
+}
+
+/* Поля формы */
+@media all {
+	textarea.form-control {
+		height: 12em;
+		resize: none;
+	}
+	.form-group._height-2 textarea.form-control {
+		height: 7.5em;
+	}
+	input[type="search"] {
+		-webkit-appearance: none;
+	}
+	.radio,
+	.checkbox {
+		position: relative;
+		display: block;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	.radio label,
+	.checkbox label {
+		min-height: 20px;
+		padding-left: 20px;
+		margin-bottom: 0;
+		font-weight: normal;
+		cursor: pointer;
+	}
+	.radio input[type="radio"],
+	.radio-inline input[type="radio"],
+	.checkbox input[type="checkbox"],
+	.checkbox-inline input[type="checkbox"] {
+		position: absolute;
+		margin-left: -20px;
+		margin-top: 4px \9;
+	}
+	.radio + .radio,
+	.checkbox + .checkbox {
+		margin-top: -5px;
+	}
+	.radio-inline,
+	.checkbox-inline {
+		position: relative;
+		display: inline-block;
+		padding-left: 20px;
+		margin-bottom: 0;
+		vertical-align: middle;
+		font-weight: normal;
+		cursor: pointer;
+	}
+	.radio-inline + .radio-inline,
+	.checkbox-inline + .checkbox-inline {
+		margin-top: 0;
+		margin-left: 10px;
+	}
+	input[type="radio"][disabled],
+	input[type="checkbox"][disabled],
+	input[type="radio"].disabled,
+	input[type="checkbox"].disabled,
+	fieldset[disabled] input[type="radio"],
+	fieldset[disabled] input[type="checkbox"] {
+		cursor: not-allowed;
+	}
+	.radio-inline.disabled,
+	.checkbox-inline.disabled,
+	fieldset[disabled] .radio-inline,
+	fieldset[disabled] .checkbox-inline {
+		cursor: not-allowed;
+	}
+	.radio.disabled label,
+	.checkbox.disabled label,
+	fieldset[disabled] .radio label,
+	fieldset[disabled] .checkbox label {
+		cursor: not-allowed;
+	}
+
+	/*placeholder*/
+	::-webkit-input-placeholder {
+		color: #999;
+		opacity: 1;
+	}
+	::-moz-placeholder {
+		color: #999;
+		opacity: 1;
+	}
+	::-ms-input-placeholder {
+		color: #999;
+		opacity: 1;
+	}
+	:focus::-webkit-input-placeholder {
+		opacity: .8;
+	}
+	:focus::-moz-placeholder {
+		opacity: .8;
+	}
+	:focus::-ms-input-placeholder {
+		opacity: .8;
+	}
+
+}
+
+/* Валидация */
+@media all {
+	/*message*/
+	.bg-danger {
+		background-color: #f2dede;
+	}
+	.starrequired {
+		color: #ce2b28;
+	}
+	.citrus-form__message-block {
+		margin-bottom: 10px;
+	}
+	.citrus-form__message-block .message-block {
+		display: flex;
+		align-items: center;
+		padding: 0.5em 20px;
+		font-weight: 700;
+		font-style: italic;
+		overflow: hidden;
+		background-color: #f3f1ec;
+	}
+	.citrus-form__message-block .message-block._error {
+		color: #ff0f26;
+	}
+	.citrus-form__message-block .message-block._success {
+		color: #55b733;
+	}
+	.citrus-form__message-block .message-block span{
+		padding-right: .5em;
+	}
+	.citrus-form__message-block .message-block .message-block-icon {
+		font-style: normal;
+		font-size: 2.5em;
+		width: 1em;
+		height: 1em;
+		margin-right: .5em;
+		flex-shrink: 0;
+
+		background-position: center center;
+		-webkit-background-size: contain;
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
+	.citrus-form__message-block .message-block._error .message-block-icon{
+		background-image: url('img/error.svg');
+	}
+	.citrus-form__message-block .message-block._success .message-block-icon{
+		background-image: url('img/success.svg');
+	}
+	.citrus-form__message-block p, .citrus-form__message-block p:last-child {
+		margin: 1em 0;
+	}
+
+	.form-control[disabled],
+	.form-control[readonly],
+	fieldset[disabled] .form-control {
+		background-color: #eeeeee;
+		opacity: 1;
+	}
+	.input-container {
+		position: relative;
+	}
+	.input-container:not(.has-error) .help-block.error, .input-container:not(.has-group-error) .help-block.group-error {
+		opacity: 0;
+		height: 0;
+		margin: 0;
+		padding: 0;
+	}
+	.input-container.has-error .help-block.error, .input-container.has-group-error .help-block.group-error {
+		opacity: 1;
+		margin-bottom: 0;
+		font-size: .85rem;
+		-webkit-transition: opacity .3s ease;
+		-o-transition: opacity .3s ease;
+		transition: opacity .3s ease;
+	}
+
+
+	.has-error .help-block, .has-group-error .help-block {
+		/*color: #ce2b28;*/
+		padding: 3px 10px 6px;
+		margin-top: 2px;
+		color: #fff;
+		background: #ff0f26;
+	}
+	.has-error .help-block span{
+		text-transform: uppercase;
+	}
+	.has-success.checkbox label, .has-success.radio label {
+		color: #3c763d;
+	}
+	.input-container.has-error .form-control {
+		border-color: #ff0f26;
+		/*-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);*/
+	}
+	.has-error .bootstrap-select .dropdown-toggle{
+		border-color: #ce2b28;
+	}
+	.has-success .bootstrap-select .dropdown-toggle {
+		border-color: #3c763d;
+	}
+
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		/* display: none; <- Crashes Chrome on hover */
+		-webkit-appearance: none;
+		margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+	}
+	input[type='number'] {
+		-moz-appearance: textfield;
+	}
+
+	/*.has-success .help-block {
+		color: #3c763d;
+	}*/
+	/*.input-container.has-success .form-control {
+		border-color: #3c763d;
+		-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	}*/
+	/*.input-container.has-success .form-control:focus {
+		border-color: #2b542c;
+		-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #67b168;
+		box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 6px #67b168;
+	}*/
+
+	/*validate icons*/
+	.input-container.has-icon {
+		position: relative;
+	}
+	.input-container.has-icon.has-success .form-control, .input-container.has-icon.has-error .form-control {
+		padding-right: 32px;
+	}
+	.input-container.has-icon:after {
+		font: normal normal normal 14px/1 FontAwesome;
+		font-size: inherit;
+		text-rendering: auto;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		position: absolute;
+		top: 0;
+		right: 0;
+		font-style: normal;
+		font-weight: 400;
+		z-index: 1;
+		display: block;
+		width: 34px;
+		height: 34px;
+		line-height: 34px;
+		text-align: center;
+		pointer-events: none;
+	}
+	.input-container.has-icon.has-success:after {
+		content: "\f00c";
+		color: #3c763d;
+	}
+	.input-container.has-icon.has-error:after {
+		content: "\f00d";
+		color: #a94442;
+	}
+
+	/*fix*/
+	.form-control::-moz-placeholder {
+		color: #999999;
+		opacity: 1;
+	}
+	.form-control:-ms-input-placeholder {
+		color: #999999;
+	}
+	.form-control::-webkit-input-placeholder {
+		color: #999999;
+	}
+	.form-control::-ms-expand {
+		border: 0;
+		background-color: transparent;
+	}
+
+}
+
+/* bootstrap select */
+@media all {
+	.citrus-form .bootstrap-select.form-control {
+		padding: 0;
+		border-bottom: 1px solid rgba(103, 103, 103, 0.6);
+	}
+	.dropdown-menu {
+		font-size: 1em;
+	}
+	.bootstrap-select.btn-group .dropdown-menu {
+		min-width: 100%;
+	}
+	.dropdown-menu > li > a {
+		white-space: normal;
+		text-decoration: none;
+	}
+	.bootstrap-select .dropdown-toggle {
+		display: inline-block;
+		margin-bottom: 0;
+		font-weight: normal;
+		text-align: center;
+		vertical-align: middle;
+		-ms-touch-action: manipulation;
+		touch-action: manipulation;
+		cursor: pointer;
+		background-image: none;
+		border: none;
+		/*border-bottom: 1px solid #bcbcbc;*/
+		white-space: nowrap;
+		padding: 6px 12px;
+		line-height: 1.42857143;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		background-color: #f3f3f3;
+		position: relative;
+		height: 3em;
+		font-size: 1em;
+	}
+	.bootstrap-select .dropdown-toggle:focus, .bootstrap-select.btn-group .dropdown-menu li a:focus {
+		outline: none !important;
+	}
+	.bootstrap-select button[type="button"]:active {
+		-webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+		box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+	}
+	.bootstrap-select.btn-group .dropdown-menu li a.default_value {
+		color: #999;
+	}
+	.bootstrap-select.btn-group .dropdown-menu li a.default_value .starrequired {
+		color: currentColor;
+	}
+
+	.bootstrap-select.btn-group .dropdown-toggle .filter-option {
+		text-overflow: ellipsis;
+	}
+	.citrus-form .bootstrap-select.btn-group .no-results {
+		margin: 0 8px;
+	}
+}
+
+/*bootstrap data-picker*/
+@media all {
+	[data-field-template="date"], [data-field-template="time"], [data-field-template="datetime"] {
+		position: relative;
+	}
+	[data-field-template="date"] .calendar-icon, [data-field-template="time"] .calendar-icon, [data-field-template="datetime"] .calendar-icon {
+		position: absolute;
+		right: 0;
+		top: 0;
+		margin: auto;
+		height: 3em;
+		line-height: 3em;
+		width: 2.5em;
+		text-align: center;
+		pointer-events: none;
+		color: #fff;
+		background-color: #9ea7aa;
+	}
+	[data-field-template="date"] .calendar-icon:before, [data-field-template="time"] .calendar-icon:before, [data-field-template="datetime"] .calendar-icon:before {
+		font-size: 1.4em;
+	}
+	.bootstrap-datetimepicker-widget.dropdown-menu {
+		font-size: 14px;
+	}
+
+	.bootstrap-datetimepicker-widget a.btn[data-action] {
+		display: inline;
+		padding: 6px 0;
+		height: auto;
+		font-size: inherit;
+		width: auto;
+	}
+}
+
+/* checkbox
+*  checbox и radio спер из https://josephuspaye.github.io/Keen-UI/#/ui-checkbox-group
+*/
+@media all {
+	.cui-checkbox-group {
+		line-height: 3em;
+		margin-left: -2em;
+	}
+	.cui-checkbox__label {
+		margin-left: 2em;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+	}
+	.cui-checkbox__input {
+		position: absolute;
+		opacity: 0;
+	}
+	.cui-checkbox__checkmark {
+		font-size: 16px; /*меняем размер чекбоксов*/
+		background-color: #fff;
+		cursor: pointer;
+		height: 1.25em;
+		position: relative;
+		width: 1.25em;
+		color: #b4a992;
+		border-radius: .125em;
+		flex-shrink: 0;
+	}
+	.cui-checkbox__checkmark:after, .cui-checkbox__checkmark:before {
+		box-sizing: border-box;
+		content: "";
+		display: block;
+		position: absolute;
+	}
+	.cui-checkbox__checkmark:before {
+		border-radius: .125em;
+		border: .093em solid currentColor;
+		height: 100%;
+		left: 0;
+		top: 0;
+		transition: all .3s ease;
+		width: 100%;
+	}
+	.cui-checkbox__checkmark:after {
+		bottom: .3125em;
+		height: .8125em;
+		left: .4375em;
+		opacity: 0;
+		transform: rotate(45deg);
+		transition-delay: .1s;
+		transition: opacity .3s ease;
+		width: .375em;
+	}
+	.cui-checkbox__label-text {
+		cursor: pointer;
+		margin-left: .6rem;
+		display: inline-block;
+		vertical-align: middle;
+		line-height: 1em;
+	}
+	.cui-checkbox-group:not(.checkbox-count-1) .cui-checkbox__label-text {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	/*checked*/
+	.cui-checkbox__input:checked + .cui-checkbox__checkmark:before,  .cui-checkbox__checkmark._checked:before {
+		background-color: currentColor;
+	}
+	.cui-checkbox__input:checked + .cui-checkbox__checkmark:after, .cui-checkbox__checkmark._checked:after {
+		border-bottom: .125em solid #fff;
+		border-right: .125em solid #fff;
+		opacity: 1;
+	}
+	/*disabled*/
+	.cui-checkbox__input:disabled + .cui-checkbox__checkmark:before {
+		border-color: rgba(0,0,0,.26);
+	}
+	.cui-checkbox__input:disabled + .cui-checkbox__checkmark + .cui-checkbox__label-text {
+		color: rgba(0,0,0,.38);
+		cursor: default;
+	}
+}
+
+/*radio*/
+@media all {
+	.cui-radio-group {
+		line-height: 3em;
+		margin-left: -2em;
+	}
+	.cui-radio__label {
+		display: inline-block;
+		margin-left: 2em;
+		white-space: nowrap;
+		cursor: pointer;
+	}
+	.cui-radio__input {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		height: 1px;
+		left: 0;
+		margin: 0;
+		opacity: 0;
+		outline: none;
+		padding: 0;
+		position: absolute;
+		top: 0;
+		width: 1px;
+	}
+	.cui-radio__checkmark {
+		font-size: 16px;
+		height: 1.25em;
+		position: relative;
+		width: 1.25em;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.cui-radio__checkmark:before, .cui-radio__checkmark:after {
+		content: "";
+		height: 1.25em;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 1.25em;
+	}
+	.cui-radio__checkmark:before {
+		background-color: transparent;
+		border-radius: 50%;
+		border: .125em solid rgba(0,0,0,.38);
+		transition: border-color .2s;
+	}
+	.cui-radio__checkmark:after {
+		background-color: rgba(0,0,0,.38);
+		border-radius: 50%;
+		opacity: 0;
+		transform: scale(1.2);
+		transition-duration: .3s;
+		transition-property: transform,opacity,background-color;
+		z-index: -1;
+	}
+	.cui-radio__label-text {
+		cursor: pointer;
+		margin-left: .4em;
+		white-space: nowrap;
+		display: inline-block;
+		vertical-align: middle;
+	}
+	/*checked*/
+	.cui-radio__input:checked +.cui-radio__checkmark:before {
+		border-color: #2b9719;
+	}
+	.cui-radio__input:checked +.cui-radio__checkmark:after {
+		background-color: #2b9719;
+		opacity: 1;
+		transform: scale(.5);
+		z-index: 0;
+	}
+}
+
+/*rating*/
+@media all {
+	.br-theme-fontawesome-stars .br-widget {
+		display: flex;
+		align-items: center;
+	}
+}
+
+/*recaptcha
+@media all {
+    .citrus-form__recaptcha-container {
+        height: 78px;
+    }
+}
+@media (max-width: 479px) {
+    .citrus-form__recaptcha-container {
+        height: 60px;
+    }
+    .citrus-form__recaptcha-container>div {
+        transform: scale(.78);
+        transform-origin: left top;
+    }
+}
+*/

@@ -1,0 +1,26 @@
+<div class="service-detailed row-ib row-grid">
+	<div class="col-md-4">
+		<a class="service-icon" href="">
+			<div class="service-box">
+				<i class="icon-catalog"></i>
+			</div>
+			<div class="service-title">Item 1</div>
+		</a>
+	</div>
+	<div class="col-md-4">
+		<a class="service-icon" href="">
+			<div class="service-box">
+				<i class="icon-price"></i>
+			</div>
+			<div class="service-title">Item 2</div>
+		</a>
+	</div>
+	<div class="col-md-4">
+		<a class="service-icon" href="">
+			<div class="service-box">
+				<i class="icon-view"></i>
+			</div>
+			<div class="service-title">Item 3</div>
+		</a>
+	</div>
+</div>

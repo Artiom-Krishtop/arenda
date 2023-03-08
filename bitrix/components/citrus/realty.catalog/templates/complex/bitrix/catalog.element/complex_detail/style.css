@@ -1,0 +1,187 @@
+.object-footer {
+	margin: 30px 0 -15px 0;
+	font-size: 0;
+}
+
+.object-footer .btn {
+	margin: 0 15px 15px 0;
+}
+
+.object-text,
+.object-info {
+	margin-top: 30px;
+}
+.object-text {
+	line-height: 1.45;
+}
+.object-address {
+	margin-bottom: 15px;
+	font-size: 15px;
+}
+.object-map{
+	margin-bottom: 15px;
+}
+	.object-map a{
+		display: -webkit-flex;
+		display: -moz-flex;
+		display: -ms-flex;
+		display: -o-flex;
+		display: flex;
+		align-items: center;
+		text-decoration: none;
+	}
+		.object-map .object-map-icon{
+			font-size: 20px;
+		}
+		.object-map .object-map-label{
+		    line-height: 12px;
+		    border-bottom: 1px solid;
+		}
+.object-price {
+	color: #fff;
+	display: inline-block;
+	padding: 0 15px;
+	line-height: 45px;
+	height: 45px;
+	min-width: 200px;
+	text-align: center;
+}
+.object-price span{
+	margin-left: 2px;
+	font-size: 24px;
+}
+.object-price span.btn-icon {
+	font-size: 24px;
+	vertical-align: -10px;
+}
+
+.object-price span.btn-label {
+	font-size: 24px;
+}
+
+.object-option.dl-menu dd, .object-option.dl-menu dt {
+	font-size: 15px;
+}
+
+.object-gallery {
+	position: relative;
+}
+
+.object-gallery-previews {
+	position: relative;
+	padding-bottom: 56.25%;
+}
+
+.object-gallery-previews figure {
+	background-color: #f3f1ec;
+	-webkit-transition: .3s;
+	-moz-transition: .3s;
+	-ms-transition: .3s;
+	-o-transition: .3s;
+	transition: .3s;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	visibility: hidden;
+	opacity: 0;
+}
+
+.object-gallery-previews figure.is-active {
+	visibility: visible;
+	opacity: 1;
+}
+
+.object-gallery-previews figcaption {
+	display: none;
+}
+
+
+.object-gallery-previews img, .object-gallery-thumbs a.gallery-thumbs img {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	left: 0;
+	right: 0;
+	max-height: 90%;
+	max-width: 90%;
+}
+
+.object-gallery-thumbs {
+	position: relative;
+	margin-top: 10px;
+}
+
+.object-gallery-thumbs a.gallery-thumbs {
+	display: block;
+	padding-bottom: 56.25%;
+	overflow: hidden;
+	position: relative;
+	background-color: #f3f1ec;
+	border: 2px solid transparent;
+	margin-bottom: 7px;
+}
+
+.object-option.dl-menu {
+	margin-bottom: -10px;
+}
+
+.object-gallery-thumbs .swiper-slide {
+	width: 33.3333333%;
+}
+.object-gallery-thumbs >.swiper-scrollbar{
+	left: 0;
+	width: 100%;
+	height: 5px;
+}
+@media screen and (max-width: 1279px) {
+	.object-option.dl-menu dd, .object-option.dl-menu dt,.object-address {
+		/*font-size: 14px;*/
+	}
+
+	.object-price span, .object-price span.btn-icon,.object-price span.btn-label {
+		font-size: 20px;
+	}
+
+	.object-price {
+		height: 40px;
+		line-height: 40px;
+	}
+
+	.object-text {
+		margin-top: 15px;
+		font-size: 14px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.object-option.dl-menu dd, .object-option.dl-menu dt {
+		width: 50%;
+	}
+}
+
+@media screen and (max-width: 479px) {
+	.object-footer .btn {
+		margin: 0 0 15px;
+		float: left;
+		width: auto;
+		clear: left;
+	}
+
+	.object-footer {
+		overflow: hidden;
+	}
+		.object-footer .btn{
+			width: 100%;
+		}
+}
+
+@media screen and (max-width: 360px) {
+	.object-gallery-thumbs .swiper-slide {
+		width: 50%;
+	}
+}

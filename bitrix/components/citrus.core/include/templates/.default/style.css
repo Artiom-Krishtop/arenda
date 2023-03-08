@@ -1,0 +1,13 @@
+
+@media all {
+	.section {
+		position: relative;
+		border-top: 1px solid #c5b99f;
+	}
+	.section._with-padding {
+		padding: 60px 0;
+	}
+	.section__header h1 {
+		margin-top: 0;
+	}
+}

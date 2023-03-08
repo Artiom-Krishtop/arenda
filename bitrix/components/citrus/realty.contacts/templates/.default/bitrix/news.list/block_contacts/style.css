@@ -1,0 +1,20 @@
+.contacts-block + .contacts-block {
+	margin-top: 30px;
+}
+.contacts-map-link{
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+.contacts-map-link-icon{
+    font-size: 20px;
+    margin-left: -6px;
+}
+.contacts-map-link-label{
+    line-height: 12px;
+    border-bottom: 1px solid;
+}

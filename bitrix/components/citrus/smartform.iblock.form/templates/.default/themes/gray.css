@@ -1,0 +1,24 @@
+.citrus-form.citrus-form__style-gray {
+	background-color: #f3f1ec;
+	-webkit-box-shadow: 0 2px 0 0 rgba(0,0,0,.15);
+	box-shadow: 0 2px 0 0 rgba(0,0,0,.15);
+	border-radius: 6px;
+	margin-bottom: 2px;
+	padding: 20px;
+}
+
+/*fields*/
+.citrus-form.citrus-form__style-gray .form-group .field-title._active {
+	color: #333;
+}
+.citrus-form.citrus-form__style-gray .form-control, .citrus-form.citrus-form__style-gray .form-control:focus {
+	background-color: #fff;
+}
+.citrus-form.citrus-form__style-gray .bootstrap-select .dropdown-toggle {
+	background-color: #fff;
+}
+
+.citrus-form__message-block .message-block {
+	padding-top: 0;
+	padding-bottom: 0;
+}

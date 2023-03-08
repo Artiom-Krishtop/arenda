@@ -1,0 +1,9 @@
+
+@media all {
+	.catalog-slider.p__swiper {
+		margin: 40px -4px -4px;
+	}
+	.swiper-slide.catalog-slider__item {
+		padding: 4px;
+	}
+}

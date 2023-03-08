@@ -1,0 +1,199 @@
+<div id="smart-form-settings_wr" ng-controller="settingsFormCtrl">
+	<p ng-if="error" ng-bind="error"></p>
+	<form action="" autocomplete="off" class="cry-f" ng-if="!error">
+		<div class="cry-f-l" >
+			<div class="cry-t-m-t">
+				<strong>Список полей формы:</strong>
+				<div class="cry-m-t-b">
+					<button ng-click="addNewGroup()" type="button" id="create_group" class="cry-b cry-b-s">
+						<i class="fa fa-th-large" aria-hidden="true"></i>
+						<span>Добавить группу</span>
+					</button>
+					<button ng-click="showHideFieldForm()" type="button" id="create_field" class="cry-b cry-b-t" ng-class="{'selected' : !curFieldIndex}">
+						<i class="fa fa-list" aria-hidden="true" ng-if="curFieldIndex"></i>
+						<i class="fa fa-times" aria-hidden="true" ng-if="!curFieldIndex"></i>
+						<span ng-if="curFieldIndex">Показать доступные поля</span>
+						<span ng-if="!curFieldIndex">Закрыть доступные поля</span>
+					</button>
+				</div>
+			</div>
+			<div class="cry-t-m-c">
+				<ul class="cry-t-m" ng-class="{'not-item-dnd' : !models.show.items.length}" id="multi" dnd-list dnd-drop="onDrop(models.show, moveElement, index)">
+					<li ng-if="!models.show.items.length" class="not-item">
+						<p>Список полей пуст. Для добавления перенесите поле из области доступных полей</p>
+					</li>
+					<field
+						dnd-moved="onMoved(models.show)"
+						dnd-selected="field.selected = !field.selected"
+						dnd-dragend="models.show.dragging = false"
+						dnd-dragstart="models.show.dragging = true"
+						dnd-draggable="getSelectedItemsIncluding(models.show, field)"
+						dnd-horizontal-list="true"
+
+						field-data="field"
+						field-index="$index"
+						field-group="field.GROUP_FIELD"
+
+						ng-repeat="field in models.show.items"
+						ng-class="{'selected' : curFieldIndex == field.id}"
+					></field>
+				</ul>
+			</div>
+		</div>
+		<div class="cry-f-r">
+			<div class="cry-i-t">
+				<strong>Настройки поля</strong>
+			</div>
+			<field-detail
+				field-data="fieldDetail"
+				field-group="field.GROUP_FIELD"
+				ng-repeat="fieldDetail in arField"
+				ng-show="curFieldIndex == fieldDetail.id"
+			></field-detail>
+		</div>
+		<div class="cry-f-r cry-f-l-f" ng-show="!curFieldIndex">
+			<div class="cry-i-t">Доступные поля</div>
+			<div class="cry-f-l-f-c">
+				<ul class="cry-t-m" dnd-list dnd-drop="onDrop(models.hide, moveElement, index)" dnd-dragover="false">
+					<li ng-if="!models.hide.items.length" class="not-item">
+						<p>Список доступных полей пуст</p>
+					</li>
+					<li
+						dnd-moved="onMoved(models.hide)"
+						dnd-selected="hideField.selected = !hideField.selected"
+						dnd-dragend="models.hide.dragging = false"
+						dnd-dragstart="models.hide.dragging = true"
+						dnd-draggable="getSelectedItemsIncluding(models.hide, hideField)"
+						dnd-horizontal-list="true"
+
+						ng-class="{'selected': hideField.selected}"
+						ng-repeat="hideField in models.hide.items"
+					>
+						<div class="cry-sort">
+							<i class="fa fa-bars" aria-hidden="true"></i>
+						</div>
+						<a href="javascript://" title="{{hideField.ORIGINAL_TITLE}}" class="cry-t-m-n">
+							<span ng-bind="hideField.ORIGINAL_TITLE"></span>
+						</a>
+
+						<i ng-hide="!hideField.selected" class="fa fa-check cry-tc-blue" aria-hidden="true"></i>
+						<i ng-hide="hideField.selected" ng-click="addField()" class="fa fa-plus" aria-hidden="true"></i>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</form>
+
+	<script type="text/ng-template" id="fieldTemplate.html">
+		<li>
+			<div class="cry-m-gp" ng-if="group">
+				<div class="cry-sort">
+					<i class="fa fa-th-large" aria-hidden="true"></i>
+				</div>
+				<a href="javascript://" ng-click="setFieldChecked()" title="{{field.ORIGINAL_TITLE}}" class="cry-t-m-n cry-f-g">
+					<span ng-bind="field.ORIGINAL_TITLE">Группа 1</span>
+				</a>
+				<a href="javascript://" class="cry-t-m-d js-group-remove"" ng-click="removeField()"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+			</div>
+			<div ng-if="!group">
+				<div class="cry-sort">
+					<i class="fa fa-bars" aria-hidden="true"></i>
+				</div>
+				<a href="javascript://" ng-click="setFieldChecked()" title="{{field.ORIGINAL_TITLE}}" class="cry-t-m-n">
+					<span ng-bind="field.ORIGINAL_TITLE"></span>
+				</a>
+				<input type="checkbox" name="" ng-checked="field.IS_REQUIRED">
+				<label class="required-check" ng-click="field.IS_REQUIRED = !field.IS_REQUIRED" title="Обязательное/Необязательное поле"></label>
+				<input type="checkbox" name="" ng-checked="field.HIDE_FIELD">
+				<label class="view-check" ng-click="field.HIDE_FIELD = !field.HIDE_FIELD" title="Скрыть/Показать поле"></label>
+				<a href="javascript://" class="cry-t-m-d js-field-remove" ng-click="removeField()"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+			</div>
+		</li>
+	</script>
+
+	<script type="text/ng-template" id="fieldDetailTemplate.html">
+		<div class="cry-t-i" id="cry-tab_1">
+			<div ng-if="::field.GROUP_FIELD" class="cry-t-i-c">
+				<div class="cry-field-g">
+					<label for="" class="cry-field-g-l">Заголовок группы:</label>
+					<input type="text" value="" ng-model="field.TITLE" class="cry-field-g-t" placeholder="Заголовок группы">
+				</div>
+				<div class="cry-field-g">
+					<label for="" class="cry-field-g-l">Класс для группы:</label>
+					<input type="text" value="" ng-model="field.CLASS" class="cry-field-g-t" placeholder="Класс для группы">
+				</div>
+				<div class="cry-field-g">
+					<label for="" class="cry-field-g-l">Уровень вложенности:</label>
+					<input type="text" value="" ng-model="field.DEPTH_LAVEL" class="cry-field-g-t" placeholder="Уровень вложенности">
+				</div>
+			</div>
+			<div ng-if="::!field.GROUP_FIELD" class="cry-t-i-c">
+				<div class="cry-field-g">
+					<label for="" class="cry-field-g-l">Заголовок поля:</label>
+					<input type="text" value="" ng-model="field.TITLE" class="cry-field-g-t" placeholder="Заголовок поля">
+				</div>
+				<div class="cry-field-g">
+					<label for="" class="cry-field-g-l">Описание поля:</label>
+					<textarea type="text" value="" ng-model="field.TOOLTIP"  rows="2" class="cry-field-g-t" placeholder="Описание поля"></textarea>
+				</div>
+				<div class="cry-field-g">
+					<label for="" class="cry-field-g-l">Placeholder:</label>
+					<input type="text" value="" ng-model="field.PLACEHOLDER" class="cry-field-g-t" placeholder="Placeholder">
+				</div>
+				<div class="cry-field-g">
+					<label for="" class="cry-field-g-l">Дополнительный класс:</label>
+					<input type="text" value="" ng-model="field.CLASS"  class="cry-field-g-t" placeholder="Дополнительный класс">
+				</div>
+				<div class="cry-field-g">
+					<label for="" class="cry-field-g-l">Значение по умолчанию:</label>
+					<input type="text" value="" ng-model="field.DEFAULT"  class="cry-field-g-t" placeholder="Дополнительный класс">
+				</div>
+
+				<!--<div class="cry-field-g">
+					<label for="" class="cry-field-g-l">Несколько опций:</label>
+					<div class="item-checkbox">
+						<input id="cry-name_2" type="checkbox" value="">
+						<label for="cry-name_2">Название</label>
+					</div>
+				</div>-->
+				<div class="cry-field-v-c">
+					<h4 class="cry-field-v-t">Валидация</h4>
+					<ul class="cry-f-v-m">
+						<li ng-class="{'selected' : !validrultab}">
+							<a href="javascript://" ng-click="validrultab = false">Параметры валидации</a>
+						</li>
+						<li ng-class="{'selected' : validrultab}">
+							<a href="javascript://" ng-click="validrultab = true">Доп. параметры валидации</a>
+						</li>
+					</ul>
+					<div class="cry-field-g-v" ng-show="!validrultab">
+						<div class="cry-field-g">
+							<label for="" class="cry-field-g-l">Правила валидации:</label>
+							<div class="item-multi-checkbox">
+								<label ng-repeat="rule in rules" ng-class="{'selected' : rule.selected}" ng-click="setAvilibalValidateRul()" ng-bind="rule.title"></label>
+							</div>
+							<div class="item-multi-value">
+								<input class="cry-field-g-t inner" name="new-rule" type="text" ng-model="newRule" />
+								<i ng-Click="addNewRuleItem()" class="new-rule-btn fa fa-plus" aria-hidden="true" ></i>
+							</div>
+						</div>
+						<div class="cry-field-g">
+							<label for="" class="cry-field-g-l">Дополнительные параметры:</label>
+							<textarea type="text" value="" ng-model="field.ADDITIONAL" rows="2" class="cry-field-g-t" placeholder="Дополнительные параметры"></textarea>
+						</div>
+					</div>
+					<div class="cry-field-g-v" ng-show="validrultab">
+						<div class="cry-field-g">
+							<label for="" class="cry-field-g-l">Правило валидации:</label>
+							<textarea type="text" value="" ng-model="field.REXRULE" rows="2" class="cry-field-g-t" placeholder="Правило валидации"></textarea>
+						</div>
+						<div class="cry-field-g">
+							<label for="" class="cry-field-g-l">Сообщение об ошибке:</label>
+							<textarea type="text" value="" ng-model="field.VALID_ERROR_MSG" rows="2" class="cry-field-g-t" placeholder="Сообщение об ошибке"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+</div>

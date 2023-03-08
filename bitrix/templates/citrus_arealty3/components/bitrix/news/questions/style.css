@@ -1,0 +1,33 @@
+.my-questions-link {
+	margin-left: 1em;
+	font-size: 60%;
+	font-weight: normal;
+}
+.question-list li {
+	padding: 1em 1em 1em 0;
+	margin: -1em !important;
+}
+.question-list .news-item-date {
+	text-transform: none;
+}
+.question-list .news-item-title {
+    font-size: 120%;
+}
+.question-list .news-item-text {
+    margin-top: .5em;
+	margin-left: 2em;
+}
+.questions-section-list {
+	font-size: 16px;
+	line-height: 24px;
+}
+.questions-section-list a {
+	color: #333;
+}
+.questions-section-list .selected {
+	text-decoration: none;
+	font-weight: bold;
+}
+.wrap .question-list li:before {
+	display: none;
+}

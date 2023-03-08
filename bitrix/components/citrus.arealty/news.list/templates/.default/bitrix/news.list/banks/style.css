@@ -1,0 +1,78 @@
+
+/* banks slider ipoteka  */
+@media all {
+    .swiper-slide.banks-slider__slide {
+        width: 396.66px;
+        padding: 2px;
+        max-width: 100%;
+    }
+    .banks-slider__card {
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+        position: relative;
+        height: 100%;
+        background-color: #fff;
+    }
+    .banks-slider__image-container {
+        height: 175px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 3px solid #e5e5e5;
+    }
+        .banks-slider__image {
+            max-width: 70%;
+            max-height: 90%;
+        }
+    .banks-slider__content {
+        padding: 20px 32px;
+    }
+    .banks-slider__properties {
+
+    }
+    .banks-slider__property {
+        display: flex;
+        justify-content: space-between;
+        font-size: 16px;
+    }
+    .banks-slider__property + .banks-slider__property {
+        margin-top: 10px;
+    }
+    .banks-slider__property-name {
+        color: #000;
+    }
+    .banks-slider__property-value {
+        font-weight: 700;
+    }
+    .banks-slider__credit-type {
+        margin-top: 26px;
+        font-size: 13px;
+        color: #888888;
+    }
+}
+@media (max-width: 479px) {
+    .banks-slider__image-container {
+        height: 150px;
+    }
+    .banks-slider__content {
+        padding: 15px;
+    }
+    .banks-slider__property {
+        font-size: 14px;
+    }
+    .banks-slider__property + .banks-slider__property {
+        margin-top: 6px;
+    }
+    .banks-slider__credit-type {
+        margin-top: 12px;
+    }
+}
+@media (max-width: 359px) {
+    .banks-slider__image-container {
+        height: 120px;
+    }
+    .banks-slider__property {
+        font-size: 13px;
+    }
+}

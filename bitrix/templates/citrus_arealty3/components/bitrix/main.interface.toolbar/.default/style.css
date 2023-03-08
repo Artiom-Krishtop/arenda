@@ -1,0 +1,41 @@
+
+@media all {
+	.btn.toolbar-btn {
+		text-transform: none;
+		border: 1px solid #c0b89f;
+		border-radius: 3px;
+		display: inline-flex;
+		padding: 9px 12px;
+		align-items: center;
+		justify-content: center;
+		line-height: 1.2;
+		color: #ae9d79;
+		font-weight: 600;
+		font-size: 14px;
+	}
+	.bx-no-touch .btn.toolbar-btn:not(.is-active):hover, .btn.toolbar-btn:not(.is-active):active {
+		background-color: #c0b89f;
+		color: #fff;
+	}
+
+	.bx-interface-toolbar--link._right {
+		margin-left: auto;
+	}
+
+	.bx-interface-toolbar--link-icon {
+		font-size: 28px;
+		margin-right: 10px;
+	}
+	.bx-interface-toolbar--link-text {
+
+	}
+
+}
+@media (max-width: 479px) {
+	.mobile-hide-text .bx-interface-toolbar--link-text {
+		display: none;
+	}
+	.mobile-hide-text .bx-interface-toolbar--link-icon {
+		margin-right: 0;
+	}
+}

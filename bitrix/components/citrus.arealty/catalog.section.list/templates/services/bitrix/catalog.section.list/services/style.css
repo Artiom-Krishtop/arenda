@@ -1,0 +1,113 @@
+@media all {
+	.service {
+
+	}
+	.service-section {
+		box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.25);
+		min-height: 100%;
+	}
+	.service-section__image-w {
+
+	}
+	.service-section__image {
+		padding-bottom: 53%;
+		display: block;
+        background-color: #fff;
+		background-position: center center;
+		-webkit-background-size: cover;
+		background-size: cover;
+	}
+	.service-section__body {
+		padding: 24px 30px 30px;
+	}
+	.service-section__title {
+		font-size: 20px;
+		font-weight: 600;
+		color: #000;
+		margin-bottom: 10px;
+		text-transform: uppercase;
+	}
+	.service__item-list {
+
+	}
+	.service__item {
+		display: block;
+		font-size: 13px;
+	}
+	.service__item + .service__item {
+		margin-top: 8px;
+	}
+
+	.service .description_block {
+		margin-top: 65px;
+	}
+
+	.service-section.btn_show_all {
+		position: relative;
+	}
+
+	.service-section.btn_show_all .service-section__body {
+		padding-bottom: 80px;
+	}
+
+	.service_link_more {
+		position: absolute;
+		bottom: 0;
+		left: 30px;
+		right: 30px;
+		margin: 0 auto;
+		height: 65px;
+		display: block;
+		border-top: 1px solid #e4e4e4;
+	}
+
+	.service_link_more a.service__footer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		line-height: 65px;
+		text-decoration: none;
+		color: #999;
+		text-transform: uppercase;
+		font-weight: 600;
+	}
+
+	.service_link_more a.service__footer [class^="icon-"] {
+		font-size: 35px;
+		color: #ccc;
+	}
+
+	.service_link_more a.service__footer:hover,
+	.service_link_more a.service__footer:hover [class^="icon-"] {
+		color: var(--hover-color);
+	}
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+	.service-section {
+		display: flex;
+	}
+	.service-section__image-w {
+		width: 354px;
+		flex-shrink: 0;
+	}
+	.service-section__image {
+		padding-bottom: 0;
+		height: 100%;
+	}
+	.service-section__body {
+		padding: 24px 20px;
+	}
+	.service_link_more {
+		left: 374px;
+	}
+}
+@media (max-width: 479px) {
+	.service-section__body {
+		padding: 18px 20px 24px;
+	}
+
+	.service_link_more {
+		left: 20px;
+		right: 20px;
+	}
+}

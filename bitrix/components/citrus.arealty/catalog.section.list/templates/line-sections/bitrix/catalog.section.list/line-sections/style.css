@@ -1,0 +1,87 @@
+
+/*template.php*/
+@media all {
+    .catalog-section-content .line-sections {
+        margin-bottom: 40px;
+    }
+    .line-sections {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -15px 20px;
+        min-width: 100%;
+        justify-content: center;
+    }
+    .line-sections--align-left {
+        justify-content: flex-start;
+    }
+    .line-sections__item {
+        width: 16.6666667%;
+        flex-basis: auto;
+        padding: 15px;
+        display: flex;
+        align-items: flex-start;
+        text-decoration: none;
+    }
+    .line-sections__item-icon-w {
+        width: 45px;
+        height: 45px;
+        margin-right: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        background-color: #adadad;
+        transition: .3s ease;
+    }
+    .line-sections__item._selected .line-sections__item-icon-w,
+    .line-sections__item:hover .line-sections__item-icon-w {
+        background-color: currentColor;
+    }
+        img.line-sections__item-icon {
+            max-width: calc( 100% - 20px );
+            max-height: calc( 100% - 20px );
+        }
+    .line-sections__item-content {
+
+    }
+    .bx-ie .line-sections__item-content {
+        width: 100%;
+    }
+    .line-sections__item-name {
+        font-weight: 600;
+        font-size: 15px;
+        margin-top: -4px;
+        margin-bottom: 4px;
+        line-height: 1.4;
+        color: #666666;
+        text-decoration: underline;
+        display: flex;
+        align-items: center;
+    }
+        .line-sections__item._selected .line-sections__item-name,
+        .line-sections__item:hover .line-sections__item-name {
+            color: #333333;
+        }
+        .line-sections__item._selected .line-sections__item-name {
+            text-decoration: none;
+        }
+    .line-sections__item-count {
+        color: #999999;
+        font-size: 13px;
+    }
+}
+@media (max-width: 1279px) {
+    .line-sections__item {
+        width: 33.333333%;
+    }
+}
+@media (max-width: 767px) {
+    .line-sections__item {
+        width: 50%;
+    }
+}
+@media (max-width: 479px) {
+    .line-sections__item {
+        width: 100%;
+    }
+}

@@ -1,0 +1,2 @@
+<?
+CJSCore::Init(['swiper', 'equalHeight']);

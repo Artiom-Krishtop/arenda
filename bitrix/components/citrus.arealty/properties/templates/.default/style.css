@@ -1,0 +1,70 @@
+
+@media all {
+	.property__it {
+		display: flex;
+	}
+    .property__it--with-title {
+        flex-wrap: wrap;
+    }
+	.property__it + .property__it {
+		margin-top: 15px;
+	}
+    .property__title {
+        flex-basis: 100%;
+    }
+	.property__icon {
+		color: #999999;
+		font-size: 16px;
+		width: 1em;
+		margin-right: 12px;
+		text-align: center;
+	}
+	.property__icon span {
+		display: block;
+		margin-top: 4px;
+	}
+	.property__value-list {
+
+	}
+	.property__value-it {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+	.property__value-it + .property__value-it {
+		margin-top: 6px;
+	}
+	.property__value-it__value {
+		font-size: 15px;
+	}
+	a.property__value-it__value:not(:hover),
+	.properties [data-property-code^="phone"] a:not(:hover) {
+		color: #333;
+		text-decoration: none;
+	}
+	.property__value-it__description {
+		font-size: 13px;
+		color: #999999;
+		margin-left: 4px;
+	}
+
+	.properties .icon-map {
+		font-size: 18px;
+	}
+	.properties .map-link {
+		text-decoration: underline;
+		font-size: 15px;
+		white-space: normal;
+	}
+}
+
+@media (max-width: 767px) {
+	.properties {
+		margin-bottom: 15px;
+	}
+}
+@media (max-width: 479px) {
+	.properties .map-link, .property__value-it__value {
+		font-size: 14px;
+	}
+}

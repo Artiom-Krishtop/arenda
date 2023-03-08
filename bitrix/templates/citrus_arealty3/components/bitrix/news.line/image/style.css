@@ -1,0 +1,31 @@
+.p__swiper.license-swiper a {
+    color: #000;
+    text-decoration: none;
+}
+
+.gallery-image {
+	margin: 0 auto;
+    display: block;
+}
+
+.gallery-title {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    display: block;
+    text-align: center;
+}
+
+.gallery-text {
+    display: block;
+    font-size: 13px;
+    color: #999;
+    text-align: center;
+}
+
+@media (max-width: 1023px) {
+    .p__swiper.history-results-nav-sllider {
+        width: calc(100% - 60px);
+        margin: 0 auto;
+    }
+}

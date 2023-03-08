@@ -1,0 +1,149 @@
+
+/*sort*/
+@media all {
+	.content-panel {
+		background-color: #f9f8f5;
+		padding: 14px 20px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 30px;
+	}
+
+	.sorting {
+		display: flex;
+		align-items: center;
+	}
+
+	.sorting-label {
+		margin-right: 30px;
+		font-weight: 600;
+	}
+
+	.sorting-list {
+		display: flex;
+		align-items: center;
+	}
+
+	.sorting-item, .sorting-item:hover {
+		color: #666666;
+	}
+		.sorting-item {
+			display: flex;
+			text-decoration: underline;
+		}
+		.sorting-item:hover {
+			text-decoration: none;
+		}
+		.sorting-item._selected {
+			color: #3598dc;
+			text-decoration: none;
+		}
+		.sorting-item+.sorting-item {
+			margin-left: 30px;
+		}
+
+	.sorting-item-label {
+		text-transform: lowercase;
+		margin-right: 8px;
+	}
+	.sorting-item-icon {
+		transform: translate(0, 2px);
+		font-size: 14px;
+	}
+}
+@media (max-width: 1023px) {
+	.sorting {
+		margin-bottom: 20px;
+	}
+	.content-panel {
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
+		margin-bottom: 10px;
+	}
+	.sorting-label {
+		margin-right: 15px;
+		width: 100px;
+	}
+}
+@media (max-width: 767px) {
+	.sorting {
+		align-items: flex-start;
+	}
+	.sorting-list {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.sorting-item {
+		align-items: flex-start;
+	}
+	.sorting-item+.sorting-item {
+		margin-left: 0;
+		margin-top: 8px;
+	}
+}
+
+
+/*view*/
+@media all {
+	.content-panel .views {
+		display: flex;
+		align-items: center;
+	}
+	.views-label {
+		vertical-align: middle;
+		margin-right: 10px;
+	}
+
+	.views-label span {
+		font-size: 14px;
+		font-weight: 600;
+	}
+
+	.views-list {
+		display: flex;
+	}
+
+	.views-item {
+		display: flex;
+		align-items: center;
+	}
+
+	.views-item+.views-item {
+		margin-left: 5px;
+	}
+
+	.btn.views-btn {
+		justify-content: center;
+		vertical-align: middle;
+		height: 30px;
+		width: 30px;
+		text-align: center;
+		line-height: 28px;
+		font-size: 14px;
+	}
+
+	.btn.views-btn.is-active {
+		color: #fff;
+	}
+
+	.btn.views-btn {
+		padding: 0;
+	}
+
+	.btn.views-btn span.btn-icon {
+		font-size: 14px;
+		margin-right: 0;
+	}
+	html.bx-ie .btn.views-btn span.btn-icon {
+		margin-left: -4px;
+	}
+}
+@media (max-width: 1023px) {
+	.views-label {
+		margin-right: 15px;
+		width: 100px;
+		line-height: normal;
+	}
+}

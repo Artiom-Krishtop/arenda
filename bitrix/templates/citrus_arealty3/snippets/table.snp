@@ -1,0 +1,17 @@
+<table class="table-formatted">
+	<tr>
+		<th>Title 1</th>
+		<th>Title 2</th>
+		<th>Title 3</th>
+	</tr>
+	<tr>
+		<td>Value 1</td>
+		<td>Value 2</td>
+		<td>Value 3</td>
+	</tr>
+	<tr>
+		<td>Value 1</td>
+		<td>Value 2</td>
+		<td>Value 3</td>
+	</tr>
+</table>

@@ -1,0 +1,3 @@
+<?
+$MESS['CITRUS_SORT_COMPONENT'] = 'Сортировка и вид';
+$MESS['CITRUS_AREALTY_MANAGE_OBJECTS_PARTNER'] = 'Цитрус';

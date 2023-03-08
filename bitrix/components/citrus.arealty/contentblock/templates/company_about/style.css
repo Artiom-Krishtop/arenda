@@ -1,0 +1,29 @@
+/* about */
+@media all {
+    .text_about {
+        padding-left: 45px !important;
+    }
+
+    .about_personal .staff-item {
+        height:auto;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .text_about .section-footer {
+        text-align: left;
+    }
+
+    .text_about p + ul.list {
+        margin-top: -15px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .text_about .section-footer {
+        text-align: center;
+    }
+    .text_about {
+        padding-left: 15px !important;
+    }
+}

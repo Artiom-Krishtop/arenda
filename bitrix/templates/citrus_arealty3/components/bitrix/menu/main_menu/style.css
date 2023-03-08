@@ -1,0 +1,102 @@
+
+@media all {
+    ul.h-menu, ul.h-menu ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    ul.h-menu {
+        display: flex;
+        width: 100%;
+    }
+    ul.h-menu>li {
+        position: relative;
+        flex: 1 auto;
+    }
+    ul.h-menu>li>a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 54px;
+        width: 100%;
+        padding: 0 10px;
+        font-size: 14px;
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+        background-color: transparent;
+        text-transform: uppercase;
+    }
+        ul.h-menu>li>a._with-icon {
+
+        }
+    .h-menu__item-icon {
+        display: inline-flex;
+        font-size: 22px;
+        width: 1em;
+        height: 1em;
+    }
+    .h-menu__link._with-icon .h-menu__item-text {
+        margin-left: 14px;
+    }
+    ul.h-sub-menu {
+        position: absolute;
+        top: 100%;
+        width: 300px;
+        padding: 10px 0;
+        visibility: hidden;
+        z-index: 5;
+    }
+    ul.h-sub-menu  ul.h-sub-menu {
+        visibility: hidden;
+        top: 0;
+        left: 100%;
+        border-left: 1px solid #fff;
+    }
+    li:hover > ul.h-sub-menu {
+        visibility: visible;
+    }
+    ul.h-sub-menu li {
+        position: relative;
+    }
+    ul.h-sub-menu li + li {
+        border-top: 1px solid rgba(255,255,255,.4);
+    }
+    ul.h-sub-menu a {
+        padding: 16px;
+        color: #ececec;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: color .15s ease;
+        position: relative;
+    }
+    .bx-no-touch ul.h-sub-menu a:hover, ul.h-sub-menu li.selected>a {
+        background-color: rgba(0,0,0,.1);
+        color: #fff;
+    }
+    .h-menu__submenu-item-text {
+
+    }
+    .h-menu__submenu-item-icon {
+        width: 1em;
+        margin-left: 5px;
+        font-size: 16px;
+        color: #929292;
+    }
+    ul.h-menu>li>a.menu_open_dropdown {
+        display: none;
+    }
+}
+@media (max-width: 1280px) {
+    .h-menu__link._with-icon .h-menu__item-text {
+        display: none;
+    }
+}
+@media (max-width: 1023px) {
+    ul.h-menu {
+        display: none;
+    }
+}
