@@ -196,7 +196,6 @@ button {
 
 html,
 body {
-    overflow-x: hidden;
     height: 100%;
     color: #051B1F;
 }
@@ -1111,7 +1110,6 @@ body {
 
 .account-content__new-map_yandex {
     border-radius: 5px;
-    overflow: hidden;
 }
 
 .account-content__new-nav {

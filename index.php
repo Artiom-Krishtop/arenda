@@ -3,7 +3,6 @@
 require($_SERVER["DOCUMENT_ROOT"] . "/bitrix/header.php");
 $APPLICATION->SetPageProperty("title", "Аренда помещений РУП ЦЕНТРКУРОРТ");
 /* $realtyModuleIncluded = CModule::IncludeModule("citrus.arealty"); */
-
 $APPLICATION->SetPageProperty("SHOW_TITLE", "N");
 $APPLICATION->SetPageProperty("SHOW_MAIN_SLIDER", "Y");
 $APPLICATION->SetPageProperty("NOT_SHOW_NAV_CHAIN", "Y");

@@ -13,6 +13,7 @@ require_once 'defines.php';
 /* Автозагрузчики классов */
 Loader::registerAutoLoadClasses(null,array(
     '\ITG\Custom\Favourites' => '/local/php_interface/Classes/Favourites.php',
+    '\ITG\Custom\GeoProperty' => '/local/php_interface/Classes/GeoProperty.php',
     '\EventHandlers\RegistrationEventHandler' => '/local/php_interface/EventHandlers/RegistrationEventHandler.php',
     '\EventHandlers\UserAuthEventHandler' => '/local/php_interface/EventHandlers/UserAuthEventHandler.php',
     '\EventHandlers\UserModeration' => '/local/php_interface/EventHandlers/UserModeration.php',
@@ -29,6 +30,9 @@ $handler->addEventHandler("main", "OnAfterUserLogin", array("EventHandlers\\User
 $handler->addEventHandler("main", "OnBeforeUserUpdate", array("EventHandlers\\UserModeration", "onBeforeUserUpdate"));
 $handler->addEventHandler("main", "OnUserDelete", array("EventHandlers\\UserModeration", "onUserDelete"));
 $handler->addEventHandler("iblock", "OnAfterIBlockElementAdd", array("EventHandlers\\IblockElementHandler", "onAfterIBlockElementAdd"));
+$handler->addEventHandler("iblock", "OnStartIBlockElementAdd", array("EventHandlers\\IblockElementHandler", "onStartIBlockElementAdd"));
+$handler->addEventHandler("iblock", "OnStartIBlockElementUpdate", array("EventHandlers\\IblockElementHandler", "onStartIBlockElementUpdate"));
+
 
 // if(isset($_REQUEST['test'])){
 //     $httpClient = new HttpClient();

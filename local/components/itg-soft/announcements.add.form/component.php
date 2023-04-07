@@ -657,25 +657,7 @@ if ($bAllowAccess)
 				$arResult["ERRORS"][] = str_replace("#PROPERTY_NAME#", intval($propertyID) > 0 ? $arResult["PROPERTY_LIST_FULL"][$propertyID]["NAME"] : (!empty($arParams["CUSTOM_TITLE_".$propertyID]) ? $arParams["CUSTOM_TITLE_".$propertyID] : GetMessage("IBLOCK_FIELD_".$propertyID)), GetMessage("IBLOCK_ADD_ERROR_REQUIRED"));
 			}
 		}
-
-		if($arParams['IBLOCK_ID'] && strlen($arUpdateValues['NAME']) > 0){
-			$arrFieldsIBlock = CIBlock::GetFields($arParams['IBLOCK_ID']);
-			
-			if(!empty($arrFieldsIBlock) && $arrFieldsIBlock['CODE']['IS_REQUIRED'] == 'Y'){
-				$arUpdateValues['CODE'] = Cutil::translit(
-					$arUpdateValues['NAME'],
-					"ru",
-					array(
-						'max_len' => $arrFieldsIBlock['TRANS_LEN'], 
-						'change_case' => $arrFieldsIBlock['TRANS_CASE'],
-						'replace_space' => $arrFieldsIBlock['TRANS_SPACE'], 
-						'replace_other' => $arrFieldsIBlock['TRANS_OTHER'],
-					)
-				);
-			}
-
-		}
-
+		
 		// check captcha
 		if ($arParams["USE_CAPTCHA"] == "Y" && $arParams["ID"] <= 0)
 		{

@@ -16,8 +16,8 @@ $this->setFrameMode(false);
 if (!empty($arResult['PROPERTY_LIST_FULL'] && !empty($arResult['TEMPLATE_TABS']))):?>
 	<section class="account-content">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/css/datepicker.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/js/datepicker.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/css/datepicker.min.css">
+		<script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/js/datepicker.min.js"></script>
 
 		<section class="account-content__inner account-content__inner-visible">
 			<?
@@ -118,7 +118,10 @@ if (!empty($arResult['PROPERTY_LIST_FULL'] && !empty($arResult['TEMPLATE_TABS'])
 											switch ($INPUT_TYPE) {
 												case 'USER_TYPE':?>
 													<div class="form__item<?= $field["USER_TYPE"] == "DateTime" ? ' form__item-date' : ''?>">
-														<label class="form__label<?= $field['IS_REQUIRED'] == 'Y' || in_array($fieldName, $arResult["PROPERTY_REQUIRED"]) ? ' required' : ''?>" for="PROPERTY[<?=$field['ID']?>][<?=$i?>]"><?= $label?>:</label>
+														<label 
+															class="form__label<?= $field['IS_REQUIRED'] == 'Y' || in_array($fieldName, $arResult["PROPERTY_REQUIRED"]) ? ' required' : ''?>" 
+															for="PROPERTY[<?=$field['ID']?>][<?=$i?>]"><?= $label?>:
+														</label>
 														<?for ($i = 0; $i<$inputNum; $i++)
 														{
 															if ($arParams["ID"] > 0 || count($arResult["ERRORS"]) > 0)
@@ -137,7 +140,13 @@ if (!empty($arResult['PROPERTY_LIST_FULL'] && !empty($arResult['TEMPLATE_TABS'])
 																$description = "";
 															}
 
-															echo call_user_func_array($arResult["PROPERTY_LIST_FULL"][$field['CODE']]["GetPublicEditHTML"],
+															$callback = $arResult["PROPERTY_LIST_FULL"][$field['CODE']]["GetPublicEditHTML"];
+															
+															if(in_array($fieldName, $arResult['ADRESS_PROP'])){
+																$callback = array('ITG\Custom\GeoProperty', 'GetAdressPropertyHtml');
+															}
+
+															echo call_user_func_array($callback,
 																array(
 																	$arResult["PROPERTY_LIST_FULL"][$field['CODE']],
 																	array(
@@ -156,7 +165,10 @@ if (!empty($arResult['PROPERTY_LIST_FULL'] && !empty($arResult['TEMPLATE_TABS'])
 												case "S":
 												case "N":?>
 													<div class="form__item<?= $field["USER_TYPE"] == "DateTime" ? ' form__item-date' : ''?>">
-														<label class="form__label<?= $field['IS_REQUIRED'] == 'Y' || in_array($fieldName, $arResult["PROPERTY_REQUIRED"]) ? ' required' : ''?>" for="PROPERTY[<?=$field['ID']?>][<?=$i?>]"><?= $label?>:</label>
+														<label 
+															class="form__label<?= $field['IS_REQUIRED'] == 'Y' || in_array($fieldName, $arResult["PROPERTY_REQUIRED"]) ? ' required' : ''?>" 
+															for="PROPERTY[<?=$field['ID']?>][<?=$i?>]"><?= $label?>:
+														</label>
 
 														<?for ($i = 0; $i < $inputNum; $i++) {
 															if ($arParams["ID"] > 0 || count($arResult["ERRORS"]) > 0) {
@@ -165,13 +177,19 @@ if (!empty($arResult['PROPERTY_LIST_FULL'] && !empty($arResult['TEMPLATE_TABS'])
 																$value = intval($field['ID']) <= 0 ? "" : $field["DEFAULT_VALUE"];
 															} else {
 																$value = "";
-															}?>
+															}
+															
+															$dateTime = $field["USER_TYPE"] == "DateTime" ? ' form__input-date' : '';
+															$adressField = in_array($fieldName, $arResult['ADRESS_PROP']) ? ' js-adress-property' : '';
+															$dataAtr = in_array($fieldName, $arResult['ADRESS_PROP']) ? 'data-field="' . $fieldName . '"' : ''
+															?>
 
 															<input 
-																class="form__input<?= $field["MULTIPLE"] == "Y" ? ' multiple' : ''?><?= $field["USER_TYPE"] == "DateTime" ? ' form__input-date' : '' ?>" 
+																class="form__input<?= $field["MULTIPLE"] == "Y" ? ' multiple' : ''?><?= $dateTime ?><?= $adressField ?>" 
 																type="text" 
 																name="PROPERTY[<?= !empty($field['ID']) ? $field['ID'] : $fieldName ?>][<?=$i?>]" 
 																value="<?=$value?>" 
+																<?= $dataAtr ?>
 																<? if($field["USER_TYPE"] == "DateTime"):?>
 																	placeholder="DD.MM.YYYY"
 																<?endif; ?>
@@ -269,42 +287,45 @@ if (!empty($arResult['PROPERTY_LIST_FULL'] && !empty($arResult['TEMPLATE_TABS'])
 						</div>
 						<? if ($name == 'ADRESS' && isset($arResult["PROPERTY_LIST_FULL"]['geodata'])):?>
 							<?$geodataField = $arResult["PROPERTY_LIST_FULL"]['geodata']; ?>
+							
 							<div class="account-content__new-map">
 								<h3 class="account-content__new-map_title">
 									<?= GetMessage('GEO_DATA_ON_MAP')?>
 								</h3>
 								<div class="account-content__new-map_yandex">
-								<?for ($i = 0; $i < 1; $i++){
-									if ($arParams["ID"] > 0 || count($arResult["ERRORS"]) > 0)
-									{
-										$value = intval($geodataField['ID']) > 0 ? $arResult["ELEMENT_PROPERTIES"][$geodataField['ID']][$i]["~VALUE"] : $arResult["ELEMENT"][$geodataField['ID']];
-										$description = intval($geodataField['ID']) > 0 ? $arResult["ELEMENT_PROPERTIES"][$geodataField['ID']][$i]["DESCRIPTION"] : "";
-									}
-									elseif ($i == 0)
-									{
-										$value = intval($geodataField['ID']) <= 0 ? "" : $arResult["PROPERTY_LIST_FULL"][$geodataField['CODE']]["DEFAULT_VALUE"];
-										$description = "";
-									}
-									else
-									{
-										$value = "";
-										$description = "";
-									}
+								
+									<?for ($i = 0; $i < 1; $i++){
+										if ($arParams["ID"] > 0 || count($arResult["ERRORS"]) > 0)
+										{
+											$value = intval($geodataField['ID']) > 0 ? $arResult["ELEMENT_PROPERTIES"][$geodataField['ID']][$i]["~VALUE"] : $arResult["ELEMENT"][$geodataField['ID']];
+											$description = intval($geodataField['ID']) > 0 ? $arResult["ELEMENT_PROPERTIES"][$geodataField['ID']][$i]["DESCRIPTION"] : "";
+										}
+										elseif ($i == 0)
+										{
+											$value = intval($geodataField['ID']) <= 0 ? "" : $arResult["PROPERTY_LIST_FULL"][$geodataField['CODE']]["DEFAULT_VALUE"];
+											$description = "";
+										}
+										else
+										{
+											$value = "";
+											$description = "";
+										}
 
-									echo call_user_func_array($arResult["PROPERTY_LIST_FULL"][$geodataField['CODE']]["GetPublicEditHTML"],
-										array(
-											$arResult["PROPERTY_LIST_FULL"][$geodataField['CODE']],
+										echo call_user_func_array(array('ITG\Custom\GeoProperty', 'GetMapPropertyHtml'),
 											array(
-												"VALUE" => $value,
-												"DESCRIPTION" => $description,
-											),
-											array(
-												"VALUE" => "PROPERTY[".$geodataField['ID']."][".$i."]",
-												"DESCRIPTION" => "PROPERTY[".$geodataField['ID']."][".$i."][DESCRIPTION]",
-												"FORM_NAME"=>"announcements_add",
-											),
-										));
-								}?>
+												$arResult["PROPERTY_LIST_FULL"][$geodataField['CODE']],
+												array(
+													"VALUE" => $value,
+													"DESCRIPTION" => $description,
+												),
+												array(
+													"VALUE" => "PROPERTY[".$geodataField['ID']."][".$i."]",
+													"DESCRIPTION" => "PROPERTY[".$geodataField['ID']."][".$i."][DESCRIPTION]",
+													"FORM_NAME"=>"announcements_add",
+												),
+											));
+									}?>
+								
 								</div>
 							</div>
 						<? endif; ?>

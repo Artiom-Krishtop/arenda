@@ -61,4 +61,10 @@ $arResult['TEMPLATE_TABS'] = array(
     )
 );
 
+$arResult['ADRESS_PROP'] = array(
+    'COUNTRY',
+    'CITY',
+    'ADDRESS',
+);
+
 
