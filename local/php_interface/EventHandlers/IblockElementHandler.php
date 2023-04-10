@@ -69,7 +69,7 @@ class IblockElementHandler
                 ];
 
                 $code = \CUtil::translit($arFields['NAME'], 'ru', $settings);
-                dd($arFields[$code]);
+                dd($code);
                 if(self::isExistsMnemonicCode($code)){
                     $list = [];
                     $iterator = ElementTable::getList([

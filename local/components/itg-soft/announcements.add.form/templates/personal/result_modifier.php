@@ -26,11 +26,11 @@ $arResult['TEMPLATE_TABS'] = array(
     'ADRESS' => array(
         'COUNTRY',
         'CITY',
-        'CITY_AREA',
-        'ADDRESS',
-        'BUILDING',
-        'NEW_FLOOR',
+        // 'CITY_AREA',
         'district',
+        'ADDRESS',
+        // 'BUILDING',
+        'NEW_FLOOR',
         'metro_stations',
     ),
     'PARAMETERS' => array(
