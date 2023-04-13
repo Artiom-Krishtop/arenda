@@ -3,6 +3,7 @@ namespace ITG\Clients;
 
 use Bitrix\Main\Web\HttpClient;
 
+/* Код в разработке */
 class InstagramClient{
 	const URL_INSTAGRAM_API = 'https://graph.instagram.com/me/';
 

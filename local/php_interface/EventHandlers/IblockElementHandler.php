@@ -3,7 +3,6 @@
 namespace EventHandlers;
 
 use Bitrix\Iblock\ElementTable;
-use CIBlockElement;
 use ITG\Clients\TelegramClient;
 
 class IblockElementHandler
@@ -69,7 +68,7 @@ class IblockElementHandler
                 ];
 
                 $code = \CUtil::translit($arFields['NAME'], 'ru', $settings);
-                dd($code);
+
                 if(self::isExistsMnemonicCode($code)){
                     $list = [];
                     $iterator = ElementTable::getList([
@@ -127,7 +126,12 @@ class IblockElementHandler
             $photo = self::getPhoto($arFields);
 
             $telegram = new TelegramClient();
-            $telegram->sendPhoto($photo, $description);
+
+            if(!empty($photo)){
+                $telegram->sendPhoto($photo, $description);
+            }else{
+                $telegram->sendMessage($description);
+            }
         }
     }
 
@@ -172,8 +176,10 @@ class IblockElementHandler
                 if($prop['PROPERTY_TYPE'] == 'F'){
                     continue;
                 }
+                
+                $value = null;
 
-                if(in_array($prop['PROPERTY_TYPE'], array('S', 'N')) && empty($prop['USER_TYPE'])){
+                if(in_array($prop['PROPERTY_TYPE'], array('S', 'N'))){
                     $value = self::getValueStringOrNumType($arFields['PROPERTY_VALUES'][$propID]);
                 }
 
@@ -222,7 +228,11 @@ class IblockElementHandler
         $strReturn = '';
 
         if(is_array($value)){
-            $strReturn = implode(', ', $value);
+            if(!empty($value['VALUE'])){
+                $strReturn = $value['VALUE']['TEXT'];
+            }else {
+                $strReturn = implode(', ', $value);
+            }
         }else {
             $strReturn = $value;
         }
