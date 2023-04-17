@@ -38,45 +38,43 @@ if (0 < (int)$arResult["VARIABLES"]["SECTION_ID"])
 	array("HIDE_ICONS" => "Y")
 );?>
 <div class="w find-form">
-<div class="section-inner">
-	<header class="section__header">
-		<div class="section-description"><?=GetMessage('CITRUS_AREALTY_SIMILAR_OFFERS_SEARCH_TEXT')?></div>
-	</header>
-<?$APPLICATION->IncludeComponent(
-//"citrus.arealty:smart.filter",
-	"travelsoft:smart.filter",
-	"",
-	array(
-		"CACHE_GROUPS" => "Y",
-		"CACHE_TIME" => "36000000",
-		"CACHE_TYPE" => "A",
-		"COMPONENT_TEMPLATE" => ".default",
-		"DISPLAY_ELEMENT_COUNT" => "N",
-		"FILTER_NAME" => "arrFilter",
-		"FILTER_VIEW_MODE" => "vertical",
-		//"IBLOCK_ID" => $realtyModuleIncluded ? Citrus\Arealty\Helper::getIblock("offers") : false,
-		"IBLOCK_ID" => 13,
-		"IBLOCK_TYPE" => "realty",
-		"INSTANT_RELOAD" => "N",
-		"PAGER_PARAMS_NAME" => "arrPager",
-		"POPUP_POSITION" => "left",
-		"SAVE_IN_SESSION" => "N",
-		//"SECTION_CODE" => $realtyModuleIncluded ? reset(\Citrus\Arealty\Iblock::getSectionCodes("offers", "Y")) : '',
-		"SECTION_CODE" => "",
-		"SECTION_CODE_PATH" => "",
-		"SECTION_DESCRIPTION" => "-",
-		"SECTION_ID" => "",
-		"SECTION_TITLE" => "-",
-		"SEF_MODE" => "N",
-		"SEF_RULE" => "",
-		"SMART_FILTER_PATH" => "#SECTION_CODE_PATH#/filter/#SMART_FILTER_PATH#/apply/",
-		"XML_EXPORT" => "N",
-		"FORM_ACTION_ON_SECTION_PAGE" => "Y",
-		"FORM_ACTION" => "/predlozhenija/offers/"
-	),
-	$component
-);?>
-</div>
+	<div class="section-inner">
+		<header class="section__header">
+			<div class="section-description"><?=GetMessage('CITRUS_AREALTY_SIMILAR_OFFERS_SEARCH_TEXT')?></div>
+		</header>
+		<?$APPLICATION->IncludeComponent(
+		//"citrus.arealty:smart.filter",
+			"travelsoft:smart.filter",
+			"",
+			array(
+				"CACHE_GROUPS" => "Y",
+				"CACHE_TIME" => "36000000",
+				"CACHE_TYPE" => "A",
+				"COMPONENT_TEMPLATE" => ".default",
+				"DISPLAY_ELEMENT_COUNT" => "N",
+				"FILTER_NAME" => "arrFilter",
+				"FILTER_VIEW_MODE" => "vertical",
+				"IBLOCK_ID" => 13,
+				"IBLOCK_TYPE" => "realty",
+				"INSTANT_RELOAD" => "N",
+				"PAGER_PARAMS_NAME" => "arrPager",
+				"POPUP_POSITION" => "left",
+				"SAVE_IN_SESSION" => "N",
+				"SECTION_CODE" => "",
+				"SECTION_CODE_PATH" => "",
+				"SECTION_DESCRIPTION" => "-",
+				"SECTION_ID" => "",
+				"SECTION_TITLE" => "-",
+				"SEF_MODE" => "N",
+				"SEF_RULE" => "",
+				"SMART_FILTER_PATH" => "#SECTION_CODE_PATH#/filter/#SMART_FILTER_PATH#/apply/",
+				"XML_EXPORT" => "N",
+				"FORM_ACTION_ON_SECTION_PAGE" => "Y",
+				"FORM_ACTION" => "/predlozhenija/offers/"
+			),
+			$component
+		);?>
+	</div>
 </div>
 <?$elementId = $APPLICATION->IncludeComponent(
 	"bitrix:catalog.element",
@@ -132,6 +130,7 @@ if (0 < (int)$arResult["VARIABLES"]["SECTION_ID"])
 		"SECTION_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["section"],
 		"DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["element"],
 		"PDF_DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["pdf"],
+		"PRINT_DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["print"],
 		'CONVERT_CURRENCY' => $arParams['CONVERT_CURRENCY'],
 		'CURRENCY_ID' => $arParams['CURRENCY_ID'],
 		'HIDE_NOT_AVAILABLE' => $arParams["HIDE_NOT_AVAILABLE"],

@@ -53,6 +53,14 @@ $arElementDeleteParams = array("CONFIRM" => GetMessage("CITRUS_REALTY_DELETE_CON
 					$arItem['PREVIEW_PICTURE'] = $photoData;
 					$arItem['DETAIL_PICTURE'] = $photoData;
 				}
+
+				if(empty($arItem['PREVIEW_PICTURE'] && empty($arItem['DETAIL_PICTURE']) && !empty($arItem['PROPERTIES']['PANORAMIC_PHOTOS']['VALUE']))){
+					$photoID = array_shift($arItem['PROPERTIES']['PANORAMIC_PHOTOS']['VALUE']);
+					$photoData = CFile::GetFileArray($photoID);
+			
+					$arItem['PREVIEW_PICTURE'] = $photoData;
+					$arItem['DETAIL_PICTURE'] = $photoData;
+				}
 				
 				?>
                 <div class="swiper-slide catalog-slider__item"

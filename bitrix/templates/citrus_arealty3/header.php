@@ -98,6 +98,11 @@ $APPLICATION->SetPageProperty('SHOW_HEADER_AUTH', Loader::includeModule('citrus.
     <? $asset->addCSS(SITE_TEMPLATE_PATH . "/css/style.css") ?>
     <? $asset->addJs(SITE_TEMPLATE_PATH . "/js/custom.js") ?>
 
+	<? if(stripos($APPLICATION->GetCurPage(false), '/predlozhenija/') !== false){
+		$asset->addJs(SITE_TEMPLATE_PATH . "/js/popcorn.js");
+		$asset->addJs(SITE_TEMPLATE_PATH . "/js/popcorn.capture.js");
+	}?>
+
 	<? if(stripos($APPLICATION->GetCurPage(false), '/account/') !== false){
 		$asset->addCSS(SITE_TEMPLATE_PATH . "/css/account.css");
 		$asset->addJs(SITE_TEMPLATE_PATH . "/js/owl.carousel.min.js");

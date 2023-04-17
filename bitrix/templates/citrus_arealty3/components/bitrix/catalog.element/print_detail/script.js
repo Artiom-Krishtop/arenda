@@ -100,18 +100,51 @@ BX.ready(function () {
       });
 });
 
-$().ready(function(){
-    var videosThumbs = $('.gallery-thumbs__video');
 
-    if(videosThumbs.length){
-        for (let i = 0; i < videosThumbs.length; i++) {
-            var el = videosThumbs[i];
+window.onload = function(){
+    var videos = $('.js-create-poster');
+    var videosThumbs = $('.gallery-thumbs__video');
+    var preloader = $('.preloader');
+    var print = function () {
+    	setTimeout(function(){
+    		preloader.removeClass('active');
+    		window.print();
+    	}, 4000);
+    }
+
+    preloader.addClass('active');
+
+    if(videos.length){
+        for (let i = 0; i < videos.length; i++) {
+            var el = videos[i];
             var $pop = Popcorn('#' + $(el).attr('id'));
             
             $pop.capture({at: 5, set: false});
-
-            $(el).siblings('canvas').show();
-            $(el).remove();
         }
+
+        if(videosThumbs.length){
+            for (let i = 0; i < videosThumbs.length; i++) {
+                var el = videosThumbs[i];
+                var $pop = Popcorn('#' + $(el).attr('id'));
+                
+                $pop.capture({at: 5, set: false});
+    
+                $(el).siblings('canvas').show();
+                $(el).remove();
+            }
+        }
+
+        window.onbeforeprint = function(event) {
+            $('figure.is-active > video').hide();
+            $('figure.is-active > canvas').show();
+        };
+        
+        window.onafterprint = function(event) {
+            $('figure.is-active > video').show();
+            $('figure.is-active > canvas').hide();
+        };
     }
-});
+    
+    print();
+};
+

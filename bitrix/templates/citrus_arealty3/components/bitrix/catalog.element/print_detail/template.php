@@ -143,7 +143,7 @@ $this->addExternalJs(SITE_TEMPLATE_PATH . '/js/MapAdapter.js')
                 <div class="row row-grid">
 					<?if(count($images) || count($videos)):?>
                         <div class="col-lg-6 col-print-12">
-							<?php if ($arParams['PRINT'] != 'Y')
+							<?php if ($arParams['PRINT'] === 'Y')
 							{
 								?>
                                 <div class="image-actions print-hidden">
@@ -198,7 +198,7 @@ $this->addExternalJs(SITE_TEMPLATE_PATH . '/js/MapAdapter.js')
 
 									<? foreach ($videos as $id => $video): ?>
 										<figure itemprop="associatedMedia" itemscope="" class="<? if ($active && !$id): ?>is-active<? endif; ?>">
-											<video controls="true">
+											<video controls="true" id="item-detail-video-<?= $id ?>" class="js-create-poster">
 												<source type="<?= $video['type']?>" src="<?= $video['src']?>">
 											</video>
 										</figure>

@@ -10,27 +10,11 @@ if (empty($_GET["id"]))
 {
 	return;
 }
-?>
-<style>
-	@media print {
-		.header {
-			display: none;
-		}
-		.preloader {
-			display: none;
-		}
-		.b-section-banner.section{
-			display: none;
-		}
-		.section__header {
-			margin-bottom: 0px;
-		}
-	}
-</style>
-<?
+
 $elementIds = !is_array($_GET["id"])? array($_GET["id"]) : $_GET["id"];
 $count = count($elementIds);
 $i = 0;
+
 foreach ($elementIds as $elementId)
 {
 	ob_start();
@@ -82,7 +66,7 @@ foreach ($elementIds as $elementId)
 
 	<?$resultElementId = $APPLICATION->IncludeComponent(
 		"bitrix:catalog.element",
-		"catalog_detail",
+		"print_detail",
 		array(
 			"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 			"IBLOCK_ID" => $arParams["IBLOCK_ID"],
@@ -133,6 +117,7 @@ foreach ($elementIds as $elementId)
 			"SECTION_CODE" => $arResult["VARIABLES"]["SECTION_CODE"],
 			"SECTION_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["section"],
 			"DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["element"],
+			"PRINT_DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["print"],
 			'CONVERT_CURRENCY' => $arParams['CONVERT_CURRENCY'],
 			'CURRENCY_ID' => $arParams['CURRENCY_ID'],
 			'HIDE_NOT_AVAILABLE' => $arParams["HIDE_NOT_AVAILABLE"],
@@ -184,19 +169,5 @@ foreach ($elementIds as $elementId)
 	<?php
 }
 ?>
-<!-- <span onclick="window.print();">TUT</span> -->
-<script>
-	$('.preloader').addClass('active');
-
-	window.onload = function(){
-		setTimeout(function(){
-			$('.preloader').removeClass('active');
-			window.print();
-		}, 4000);
-	}
-</script>
-
-
-
 
 <?php require $_SERVER["DOCUMENT_ROOT"] . "/bitrix/footer.php"; ?>
