@@ -46,7 +46,7 @@ $arElementDeleteParams = array("CONFIRM" => GetMessage("CITRUS_REALTY_DELETE_CON
 					}
 				}
 				
-				if(empty($arItem['PREVIEW_PICTURE'] && empty($arItem['DETAIL_PICTURE']) && !empty($arItem['PROPERTIES']['photo']['VALUE']))){
+				if(empty($arItem['PREVIEW_PICTURE']) && empty($arItem['DETAIL_PICTURE']) && !empty($arItem['PROPERTIES']['photo']['VALUE'])){
 					$photoID = array_shift($arItem['PROPERTIES']['photo']['VALUE']);
 					$photoData = CFile::GetFileArray($photoID);
 		
@@ -54,7 +54,7 @@ $arElementDeleteParams = array("CONFIRM" => GetMessage("CITRUS_REALTY_DELETE_CON
 					$arItem['DETAIL_PICTURE'] = $photoData;
 				}
 
-				if(empty($arItem['PREVIEW_PICTURE'] && empty($arItem['DETAIL_PICTURE']) && !empty($arItem['PROPERTIES']['PANORAMIC_PHOTOS']['VALUE']))){
+				if(empty($arItem['PREVIEW_PICTURE']) && empty($arItem['DETAIL_PICTURE']) && !empty($arItem['PROPERTIES']['PANORAMIC_PHOTOS']['VALUE'])){
 					$photoID = array_shift($arItem['PROPERTIES']['PANORAMIC_PHOTOS']['VALUE']);
 					$photoData = CFile::GetFileArray($photoID);
 			

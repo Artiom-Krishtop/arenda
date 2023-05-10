@@ -57,7 +57,7 @@ $elementDeleteParams = array('CONFIRM' => GetMessage('CT_BCS_TPL_ELEMENT_DELETE_
 						}
 					}
 
-					if(empty($item['PREVIEW_PICTURE'] && empty($item['DETAIL_PICTURE']) && !empty($item['PROPERTIES']['photo']['VALUE']))){
+					if(empty($item['PREVIEW_PICTURE']) && empty($item['DETAIL_PICTURE']) && !empty($item['PROPERTIES']['photo']['VALUE'])){
 						$photoID = array_shift($item['PROPERTIES']['photo']['VALUE']);
 						$photoData = CFile::GetFileArray($photoID);
 				

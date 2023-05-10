@@ -1,6 +1,6 @@
 <?php if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();?>
 <? $APPLICATION->IncludeComponent(
-	"citrus:bigdata.map",
+	"citrus.custom:bigdata.map",
 	"",
 	array(
 		"CACHE_TYPE" => "Y",
