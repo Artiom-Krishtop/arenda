@@ -56,7 +56,7 @@ $arUrlRewrite=array (
     'PATH' => '/informacija/faq/index.php',
     'SORT' => 100,
   ),
-  11 => 
+  13 => 
   array (
     'CONDITION' => '#^/predlozhenija/#',
     'RULE' => '',
