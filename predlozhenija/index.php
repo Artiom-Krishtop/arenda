@@ -124,7 +124,6 @@ $APPLICATION->SetTitle("Предложения");
 			87 => "publishterms_sevices",
 			88 => "publishterms_excludedsevices",
 			89 => "publishterms_ignoreservicepackages",
-			90 => "feed_yandex_promo",
 			91 => "floor",
 			92 => "rooms_type",
 			93 => "complex",

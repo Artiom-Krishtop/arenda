@@ -32,7 +32,7 @@ use \Citrus\Arealty\SortOrder;
 		"AJAX_OPTION_STYLE" => "Y",
 		"AJAX_OPTION_HISTORY" => "N",
 		"CACHE_TYPE" => "A",
-		"CACHE_TIME" => "36000000",
+		"CACHE_TIME" => "3600",
 		"CACHE_GROUPS" => "Y",
 		"SET_META_KEYWORDS" => "N",
 		"META_KEYWORDS" => "",
