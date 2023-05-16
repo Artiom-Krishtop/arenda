@@ -1,3 +1,4 @@
+
 ;(function () {
     "use strict";
 
@@ -11,26 +12,26 @@
 	 * @param {object} settings - ���������:
 	 * @param {boolean} settings.allow_polygon - �������� �������� ��������
 	 */
-	window.MapGeoProperty = function (geodataDivId, fields, settings) {
+	window.GeoProperty = function (geodataDivId, fields, settings) {
         var self = this;
 		self.fields = fields || {};
 		self.settings = settings || {};
 
-		var mapProperty = document.getElementById(geodataDivId);
+    var mapProperty = document.getElementById(geodataDivId);
+    // FIX ��� ������������� ���� 1 ��� (�.�. � ��������� ������ ������� ���������� ���� ������ �� ���������)
+    if (mapProperty.hasAttribute("citrus-map-init")) {
+      return;
+    }
+    mapProperty.setAttribute("citrus-map-init", 1);
 
-		if (mapProperty.hasAttribute("citrus-map-init")) {
-			return;
-		}
-
-		mapProperty.setAttribute("citrus-map-init", 1);
-
-		var coordLat = self.fields.Latitude || 0;
+    var coordLat = self.fields.Latitude || 0;
 		var coordLong = self.fields.Longitude || 0;
 
 	    var mapAddress = mapProperty.querySelector(".js-citrus-map-select-object-title"),
 		    mapNode = mapProperty.querySelector(".js-citrus-map-select-object-map");
 
 	    self.mapObjectInput = mapProperty.querySelector(".js-citrus-map-selected-object-input");
+	    var inputAddress = mapProperty.querySelector(".js-citrus-map-address-fields");
 
 	    var inputBounds0 = mapProperty.querySelector(".js-citrus-map-mapbounds0");
 	    var inputBounds1 = mapProperty.querySelector(".js-citrus-map-mapbounds1");
@@ -116,13 +117,37 @@
 		    var hasCoords = coordLat && coordLong;
 
 		    self.map = new ymaps.Map(mapNode, {
-			    center: [coordLat || 53.902284, coordLong || 27.561831],
+			    center: [coordLat || 53.902735, coordLong || 27.555696],
 			    zoom: hasCoords ? 16 : 9,
 			    controls: []
 		    });
 
-			//zoom
-			self.map.controls.add(new ymaps.control.ZoomControl());
+		    //search
+		    {
+			    var searchControl = new ymaps.control.SearchControl({
+				    options: {
+					    noPlacemark: true
+				    }
+			    });
+			    self.map.controls.add(new ymaps.control.ZoomControl());
+			    self.map.controls.add(searchControl);
+			    searchControl.events.add('resultselect', function (e) {
+				    var index = e.get('index');
+				    searchControl.getResult(index).then(function (res) {
+					    var coords = res.geometry.getCoordinates();
+					    if (self.placemark) {
+						    self.placemark.geometry.setCoordinates(coords);
+					    } else {
+						    self.placemark = self.createPlacemark(coords);
+						    self.map.geoObjects.add(self.placemark);
+						    self.placemark.events.add('dragend', function () {
+							    self.getAddress(self.placemark.geometry.getCoordinates(), true);
+						    });
+					    }
+					    self.getAddress(coords);
+				    });
+			    });
+		    }
 
 		    //polygon
 		    if (self.settings.allow_polygon) {
@@ -130,49 +155,65 @@
 		    	self.addPolygon();
 		    }
 
+		    self.map.events.add('click', function (e) {
+			    var coords = e.get('coords');
+			    if (self.placemark) {
+				    self.placemark.geometry.setCoordinates(coords);
+			    } else {
+				    self.placemark = self.createPlacemark(coords);
+				    self.map.geoObjects.add(self.placemark);
+				    // ������� ������� ��������� �������������� �� �����.
+				    self.placemark.events.add('dragend', function () {
+					    self.getAddress(self.placemark.geometry.getCoordinates(), true);
+				    });
+			    }
+			    self.getAddress(coords, true);
+		    });
+
 		    // init mark if has coords
-			if (hasCoords) {
-				var coords = [coordLat, coordLong];
-				if (self.placemark) {
-					self.placemark.geometry.setCoordinates(coords);
-				} else {
-					self.placemark = self.createPlacemark(coords);
-					self.map.geoObjects.add(self.placemark);
-					self.placemark.events.add('dragend', function () {
-						self.getAddress(placemark.geometry.getCoordinates(), true);
-					});
-				}
-				self.placemark.properties.set('iconCaption', mapAddress.innerHTML);
-			}
+		    {
+			    if (hasCoords) {
+				    var coords = [coordLat, coordLong];
+				    if (self.placemark) {
+					    self.placemark.geometry.setCoordinates(coords);
+				    } else {
+					    self.placemark = self.createPlacemark(coords);
+					    self.map.geoObjects.add(self.placemark);
+					    self.placemark.events.add('dragend', function () {
+						    self.getAddress(placemark.geometry.getCoordinates(), true);
+					    });
+				    }
+				    self.placemark.properties.set('iconCaption', mapAddress.innerHTML);
+			    }
+		    }
 
 		    //bounds
-			if (inputBounds0.value && inputBounds1.value
-				&& inputBounds2.value && inputBounds2.value) {
-				self.map.setBounds(
-					[
-						[inputBounds0.value, inputBounds1.value],
-						[inputBounds2.value, inputBounds3.value]
-					],
-					{
-						checkZoomRange: false
-					}
-				);
-			}
-			if (inputZoom.value && parseInt(inputZoom.value) > 0) {
-				self.map.setZoom(inputZoom.value);
-			}
+		    {
+			    if (inputBounds0.value && inputBounds1.value
+				    && inputBounds2.value && inputBounds2.value) {
+				    self.map.setBounds(
+					    [
+						    [inputBounds0.value, inputBounds1.value],
+						    [inputBounds2.value, inputBounds3.value]
+					    ],
+					    {
+						    checkZoomRange: false
+					    }
+				    );
+			    }
+			    if (inputZoom.value && parseInt(inputZoom.value) > 0) {
+				    self.map.setZoom(inputZoom.value);
+			    }
 
-			self.map.events.add("boundschange", function (e) {
-				var bounds = self.map.getBounds();
-				inputBounds0.value = bounds[0][0];
-				inputBounds1.value = bounds[0][1];
-				inputBounds2.value = bounds[1][0];
-				inputBounds3.value = bounds[1][1];
-				inputZoom.value = self.map.getZoom();
-			});
-
-			//adress form input
-			self.initAdressFormInput();
+			    self.map.events.add("boundschange", function (e) {
+				    var bounds = self.map.getBounds();
+				    inputBounds0.value = bounds[0][0];
+				    inputBounds1.value = bounds[0][1];
+				    inputBounds2.value = bounds[1][0];
+				    inputBounds3.value = bounds[1][1];
+				    inputZoom.value = self.map.getZoom();
+			    });
+		    }
 	    };
 
 	    this.createPlacemark = function(coords) {
@@ -180,7 +221,7 @@
 			    iconCaption: '...'
 		    }, {
 			    preset: 'islands#violetDotIconWithCaption',
-			    draggable: false,
+			    draggable: true,
 			    visible: !self.settings.allow_polygon
 		    });
 	    };
@@ -191,12 +232,11 @@
 			    firstGeoObject.getLocalities().length ? firstGeoObject.getLocalities() : firstGeoObject.getAdministrativeAreas(),
 			    firstGeoObject.getThoroughfare() || firstGeoObject.getPremise()
 		    ].filter(Boolean).join(', ');
-
-		    self.placemark.properties.set({
+		    self.placemark.properties
+			    .set({
 				    iconCaption: address,
 				    balloonContent: firstGeoObject.getAddressLine()
 			    });
-
 		    mapAddress.innerHTML = firstGeoObject.getAddressLine();
 	    };
 
@@ -215,8 +255,6 @@
 		    self.placemark.properties.set('iconCaption', '...');
 		    ymaps.geocode(coords).then(function (res) {
 			    self.setPlacemark(res);
-				self.map.setCenter(coords);
-				self.map.setZoom(16);
 		    });
 		    ymaps.geocode(coords, {
 			    json: true,
@@ -231,6 +269,7 @@
 							    var input = document.querySelector(".js-citrus-map-address-" + k);
 							    if (input) {
 								    input.value = "";
+								    //input.disabled = true;
 							    }
 						    }
 						    // init address values in input fields
@@ -240,6 +279,7 @@
 									    ".js-citrus-map-address-" + k);
 								    if (input) { // init input value
 									    input.value = v;
+									    //input.disabled = false;
 								    }
 							    }
 						    });
@@ -279,85 +319,31 @@
         this.init = function () {
 	        if (coordLat && coordLong) {
 		        self.initMap();
-	        }else if (mapProperty.getAttribute("data-address")) {
+	        }
+	        else if (mapProperty.getAttribute("data-address")) {
 		        self = this;
 		        ymaps.geocode(mapProperty.getAttribute("data-address"), {
 			        results: 1
 		        }).then(function (res) {
 			        var object = res.geoObjects.get(0);
-			        
-					if (object) {
+			        if (object) {
 				        [coordLat, coordLong] = object.geometry.getCoordinates();
 				        self.initMap();
 			        }
 		        });
-	        } else {
+	        }
+	        else {
 		        self.initMap();
 	        }
 
 	        // init update json on change address inputs
 	        for (var k in addressInputFields) {
 		        var input = document.querySelector(".js-citrus-map-address-" + k);
-		        
-				if (input) {
+		        if (input) {
 			        BX.bind(input, "change", self.updateJsonFromAddress);
 		        }
 	        }
         };
-
-		this.initAdressFormInput = function(){
-			var form = mapProperty.closest('form');
-			var adressInputs = form.querySelectorAll('.js-adress-property');
-
-			if(adressInputs.length > 0){
-				for (var i = 0 ; i < adressInputs.length; i++) {
-					adressInputs[i].addEventListener('change', this.getFullAdress);
-				}
-			}
-		};
-
-		this.getFullAdress = function () {
-			var form = mapProperty.closest('form');
-			var adressInputs = form.querySelectorAll('.js-adress-property');
-			var adress = [];
-
-			if(adressInputs.length){
-				for (var i = 0 ; i < adressInputs.length; i++) {
-					switch (adressInputs[i].nodeName) {
-						case 'INPUT':
-							if(adressInputs[i].value.length){
-								adress.push(adressInputs[i].value);
-							}
-							break;
-						
-						case 'SELECT':
-							if(adressInputs[i].value.length){
-								adress.push(adressInputs[i].options[adressInputs[i].selectedIndex].text);
-							}
-							break;
-					}
-				}
-			}
-
-			adress = adress.join(', ');
-			
-			if(adress.length > 0){
-				ymaps.geocode(adress).then(function (res) {
-					var firstGeoObject = res.geoObjects.get(0);
-					var coords = firstGeoObject.geometry.getCoordinates();
-
-					if (self.placemark) {
-						self.placemark.geometry.setCoordinates(coords);
-					} else {
-						self.placemark = self.createPlacemark(coords);
-						self.map.geoObjects.add(self.placemark);
-					}
-
-					self.getAddress(coords);
-				});
-			}
-		};
-
 	    ymaps.ready(this.init);
     };
 }());

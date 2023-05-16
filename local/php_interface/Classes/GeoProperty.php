@@ -202,20 +202,23 @@ class GeoProperty extends Polyfill
 
 		$addressInputs = array();
 		foreach (array(
-			         'CountryName', 
-			         'AdministrativeAreaName',
-			         'SubAdministrativeAreaName',
-			         'LocalityName',
-			         'DependentLocalityName',
-			         'ThoroughfareName',
-			         'PremiseNumber',
-		         ) as $input )
+			         'CountryName' => Loc::getMessage('CITRUS_AREALTY_ADDR_COUNTRYNAME'),
+			         'AdministrativeAreaName' => Loc::getMessage('CITRUS_AREALTY_ADDR_ADMINISTRATIVEAREANAME'),
+			         'SubAdministrativeAreaName' => Loc::getMessage('CITRUS_AREALTY_ADDR_SUBADMINISTRATIVEAREANAME'),
+			         'LocalityName' => Loc::getMessage('CITRUS_AREALTY_ADDR_LOCALITYNAME'),
+			         'DependentLocalityName' => Loc::getMessage('CITRUS_AREALTY_ADDR_DEPENDENTLOCALITYNAME'),
+			         'ThoroughfareName' => Loc::getMessage('CITRUS_AREALTY_ADDR_THOROUGHFARENAME'),
+			         'PremiseNumber' => Loc::getMessage('CITRUS_AREALTY_ADDR_PREMISENUMBER'),
+		         ) as $input => $title)
 		{
 			$addressInputs[$input] = '<input name="js_citrus_map_fix_address['
 				. $input . ']" value="'
-				. (!empty($data[$input]) ? htmlspecialcharsex($data[$input]) : "") . '" '
-				. ' type="hidden"'
-				. ' class="adm-input js-citrus-map-address-' . $input . '">';
+				. (!empty($data[$input]) ?
+					htmlspecialcharsex($data[$input]) : "") . '" '
+				. ' type="hidden" placeholder="' . htmlspecialcharsex($title)
+				. '" title="' . htmlspecialcharsex($title)
+				. '" class="adm-input js-citrus-map-address-' . $input
+				. '" style="width:45%;margin:4px 4px;">';
 		}
 		foreach (array(
 			         "mapbounds0",
@@ -236,7 +239,7 @@ class GeoProperty extends Polyfill
 		ob_start();
 		?>
 		<div class="js-citrus-map-select-object" id="geodata-block-<?=$arProperty['ID']?>">
-			<?=implode("\n", $addressInputs)?>
+			<div class="js-citrus-map-address-fields" style="display:none;"><?=implode("\n", $addressInputs)?></div>
 			<div class="citrus-map-address-title" style="margin:5px 5px;">
 				<?=static::getHtml($arProperty, $value, $strHTMLControlName)?> &nbsp;
 			</div>
@@ -251,7 +254,7 @@ class GeoProperty extends Polyfill
 					'GEODATA_BTN_CONTENT_END' => Loc::getMessage("GEODATA_BTN_CONTENT_END")
 				))?>
 			);
-			new MapGeoProperty("geodata-block-<?=$arProperty['ID']?>", <?=$jsonGeoData?>, <?=$jsonSettings?>)
+			new GeoProperty("geodata-block-<?=$arProperty['ID']?>", <?=$jsonGeoData?>, <?=$jsonSettings?>)
 		</script>
 		<?
 		return ob_get_clean();
@@ -268,33 +271,5 @@ class GeoProperty extends Polyfill
 		}
 
 		return $result;
-	}
-
-	public static function GetAdressPropertyHtml($arProperty, $value, $strHTMLControlName)
-	{
-		if(Loader::includeModule('iblock')){
-			$settings = \CIBlockPropertyElementList::PrepareSettings($arProperty);
-			if($settings["size"] > 1)
-				$size = ' size="'.$settings["size"].'"';
-			else
-				$size = '';
-	
-			if($settings["width"] > 0)
-				$width = ' style="width:'.$settings["width"].'px"';
-			else
-				$width = '';
-	
-			$bWasSelect = false;
-			$options = \CIBlockPropertyElementList::GetOptionsHtml($arProperty, array($value["VALUE"]), $bWasSelect);
-	
-			$html = '<select name="'.$strHTMLControlName["VALUE"].'"'.$size.$width.' class="js-adress-property" data-field="' . $arProperty['CODE'] . '">';
-			if($arProperty["IS_REQUIRED"] != "Y")
-				$html .= '<option value=""'.(!$bWasSelect? ' selected': '').'>'.Loc::getMessage("IBLOCK_PROP_ELEMENT_LIST_NO_VALUE").'</option>';
-			$html .= $options;
-			$html .= '</select>';
-			return  $html;
-		}
-
-		return '';
 	}
 }

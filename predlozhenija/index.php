@@ -6,7 +6,7 @@ $APPLICATION->SetTitle("Предложения");
 
 ?><?$APPLICATION->IncludeComponent(
 	"citrus:realty.catalog", 
-	".default", 
+	"custom", 
 	array(
 		"ACTION_VARIABLE" => "action",
 		"ADD_ELEMENT_CHAIN" => "Y",
@@ -42,7 +42,6 @@ $APPLICATION->SetTitle("Предложения");
 			5 => "NEW_ROOMS_AREA",
 			6 => "NEW_COMMERCIAL_FEATURES",
 			7 => "NEW_COMMERCIAL_TYPE",
-			8 => "BEST",
 			9 => "NEW_FLOOR",
 			10 => "NEW_ROOMS_TYPE",
 			11 => "DESCRIPTION",

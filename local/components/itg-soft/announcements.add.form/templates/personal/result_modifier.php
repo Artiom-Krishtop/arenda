@@ -24,17 +24,17 @@ $arResult['TEMPLATE_TABS'] = array(
 
     // ),
     'ADRESS' => array(
-        'COUNTRY',
-        'CITY',
+        // 'COUNTRY',
+        // 'CITY',
         // 'CITY_AREA',
-        'district',
-        'ADDRESS',
+        // 'district',
+        // 'ADDRESS',
         // 'BUILDING',
-        'NEW_FLOOR',
-        'metro_stations',
+
     ),
     'PARAMETERS' => array(
         'category',
+        'NEW_FLOOR',
         'rooms_html',
         'NEW_ROOMS_AREA',
         'rooms',
@@ -42,9 +42,10 @@ $arResult['TEMPLATE_TABS'] = array(
         'NEW_COMMERCIAL_FEATURES',
         'common_area',
         'phone_lines',
+        'metro_stations',
         'office_class',
         'garage_features',
-        'DESCRIPTION'
+        'DESCRIPTION',
     ),
     'PRICE' => array(
         'cost',
@@ -61,10 +62,5 @@ $arResult['TEMPLATE_TABS'] = array(
     )
 );
 
-$arResult['ADRESS_PROP'] = array(
-    'COUNTRY',
-    'CITY',
-    'ADDRESS',
-);
 
 
