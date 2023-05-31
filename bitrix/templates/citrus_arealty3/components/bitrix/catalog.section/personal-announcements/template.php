@@ -65,6 +65,14 @@ $elementDeleteParams = array('CONFIRM' => GetMessage('CT_BCS_TPL_ELEMENT_DELETE_
 				$item['PREVIEW_PICTURE'] = $photoData;
 				$item['DETAIL_PICTURE'] = $photoData;
 			}
+
+			if(empty($item['PREVIEW_PICTURE']) && empty($item['DETAIL_PICTURE']) && !empty($item['PROPERTIES']['PANORAMIC_PHOTOS']['VALUE'])){
+				$photoID = array_shift($item['PROPERTIES']['PANORAMIC_PHOTOS']['VALUE']);
+				$photoData = CFile::GetFileArray($photoID);
+		
+				$item['PREVIEW_PICTURE'] = $photoData;
+				$item['DETAIL_PICTURE'] = $photoData;
+			}
 			
 			$APPLICATION->IncludeComponent(
 				'bitrix:catalog.item',
