@@ -7,6 +7,8 @@ use EventHandlers\Classes\GeoDataHandler;
 use EventHandlers\Classes\MnenonicCodeHandler;
 use EventHandlers\Classes\TelegramHandler;
 
+Loader::includeModule('iblock');
+
 class IblockElementHandler
 {
     public function onStartIBlockElementAdd(&$arFields)
@@ -16,8 +18,14 @@ class IblockElementHandler
 
     public function onStartIBlockElementUpdate(&$arFields)
     {
-        if(strlen($arFields['CODE']) == 0){
-            MnenonicCodeHandler::generateMnemonicCode($arFields);
+        if(intval($arFields['ID']) > 0 && strlen($arFields['CODE']) == 0){
+            $dbRes = \CIBlockElement::GetByID($arFields['ID']);
+
+            if($el = $dbRes->Fetch()){
+                if(strlen($el['CODE']) == 0){
+                    MnenonicCodeHandler::generateMnemonicCode($arFields);
+                }
+            }
         }
     }
 

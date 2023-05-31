@@ -418,12 +418,14 @@ if ($bAllowAccess)
 
 						if(!empty($arParams['ID'])){
 							$curFileRes = CIBlockElement::GetProperty($arParams['IBLOCK_ID'], $arParams['ID'], Array(), Array('ID' => $propertyID));
-							
+
 							while ($curFileValue = $curFileRes->Fetch()) {
-								if($key = array_search($curFileValue['VALUE'], $tmpFiles)){
-									unset($tmpFiles[$key]);
-								}else {
+								$key = array_search($curFileValue['VALUE'], $tmpFiles);
+
+								if($key === false){
 									$arUpdatePropertyValues[$propertyID][$curFileValue['PROPERTY_VALUE_ID']] = array('del' => 'Y');
+								}else {
+									unset($tmpFiles[$key]);
 								}
 							}
 						}

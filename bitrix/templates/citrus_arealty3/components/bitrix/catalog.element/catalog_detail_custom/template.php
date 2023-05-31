@@ -141,7 +141,7 @@ $this->addExternalJs(SITE_TEMPLATE_PATH . '/js/MapAdapter.js')
 
             <div class="section__content catalog-section-content">
                 <div class="row row-grid">
-					<?if(count($images) || count($videos)):?>
+					<?if(count($images) || count($videos) || count($panoramic)):?>
                         <div class="col-lg-6 col-print-12">
 							<?php if ($arParams['PRINT'] != 'Y')
 							{
